@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <link rel="stylesheet" href="/css/show.css">
+    <title>Publisher Table</title>
+</head>
+<body>
+    <h1>Publisher Table</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Phone Number</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        <div th:each="el: ${publishers}">
+            <tr>
+                <td th:text="${el.getId()}"></td>
+                <td th:text="${el.getName()}"></td>
+                <td th:text="${el.getAddress()}"></td>
+                <td th:text="${el.getPhonenumber()}"></td>
+            </tr>
+        </div>
+
+        </tbody>
+    </table>
+</body>
+</html>

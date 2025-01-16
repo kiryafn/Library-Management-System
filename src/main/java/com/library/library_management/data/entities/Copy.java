@@ -17,12 +17,13 @@ public class Copy {
     @Column(nullable = false)
     private Integer copyNumber;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String status;
+    private CopyStatus status;
 
     public Copy() {}
 
-    public Copy(Book book, Integer copyNumber, String status) {
+    public Copy(Book book, Integer copyNumber, CopyStatus status) {
         this.book = book;
         this.copyNumber = copyNumber;
         this.status = status;
@@ -52,21 +53,32 @@ public class Copy {
         this.copyNumber = copyNumber;
     }
 
-    public String getStatus() {
+    public CopyStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(CopyStatus status) {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "Copy{" +
-                "id=" + id +
-                ", book=" + (book != null ? book.getTitle() : null) +
-                ", copyNumber=" + copyNumber +
-                ", status='" + status + '\'' +
-                '}';
+    // Удобные методы для работы со статусами
+    public boolean isAvailable() {
+        return this.status == CopyStatus.AVAILABLE;
+    }
+
+    public void markAsAvailable() {
+        this.status = CopyStatus.AVAILABLE;
+    }
+
+    public void markAsBorrowed() {
+        this.status = CopyStatus.BORROWED;
+    }
+
+    public void markAsReserved() {
+        this.status = CopyStatus.RESERVED;
+    }
+
+    public void markAsLost() {
+        this.status = CopyStatus.RESERVED;
     }
 }

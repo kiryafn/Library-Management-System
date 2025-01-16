@@ -97,15 +97,5 @@ public class Book {
         this.copies = copies;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", publisher='" + publisher + '\'' +
-                ", publicationYear=" + publicationYear +
-                ", isbn='" + isbn + '\'' +
-                '}';
-    }
+
 }

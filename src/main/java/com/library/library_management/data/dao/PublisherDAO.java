@@ -21,7 +21,7 @@ public class PublisherDAO implements DAO<Publisher> {
     }
 
     @Override
-    @Transactional //method should be done in transaction (auto commit or rollback)
+    @Transactional //method should be done in transaction (but with annotation its done automatically)(auto commit or rollback)
     public void delete(int id) {
         Publisher publisher = entityManager.find(Publisher.class, id);
         if (publisher != null) {

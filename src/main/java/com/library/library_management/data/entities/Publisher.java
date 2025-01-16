@@ -3,6 +3,7 @@ package com.library.library_management.data.entities;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,8 +23,17 @@ public class Publisher {
     @Column(name = "PHONENUMBER", length = 20)
     private String phonenumber;
 
-    //@OneToMany(mappedBy = "publisher", cascade = CascadeType.ALL, orphanRemoval = true)
-    //private Set<Book> books = new HashSet<>();
+    @OneToMany(mappedBy = "publisher", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Book> books;
+
+    public Publisher() {}
+
+    public Publisher(Integer id, String name, String address, String phonenumber) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.phonenumber = phonenumber;
+    }
 
     public Integer getId() {
         return id;
@@ -55,6 +65,14 @@ public class Publisher {
 
     public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 
 }

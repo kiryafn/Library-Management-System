@@ -2,6 +2,7 @@ package com.library.library_management;
 
 import com.library.library_management.data.dao.BookDAO;
 import com.library.library_management.data.dao.CopyDAO;
+import com.library.library_management.data.dao.PublisherDAO;
 import com.library.library_management.data.entities.Book;
 import com.library.library_management.data.entities.Copy;
 import com.library.library_management.data.entities.Publisher;
@@ -16,168 +17,153 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest()
-@ActiveProfiles("test")
-class CopyTests {
+@SpringBootTest // Enables Spring Boot Test Context
+@ActiveProfiles("test") // Uses "test" profile for the database
+public class CopyTests {
 
     @Autowired
     private CopyDAO copyDAO;
+
     @Autowired
     private BookDAO bookDAO;
 
-    private Copy copy;
+    @Autowired
+    private PublisherDAO publisherDAO;
+
+    private Publisher publisher;
     private Book book;
+    private Copy copy;
 
     @BeforeEach
-    void before() {
-        // Создаем базовый объект Book для тестирования
-        book = new Book();
-        book.setTitle("Test Book");
-//        book.setAuthor("Test Author");
-//        book.setIsbn("1234567890");
-//        book.setPublicationYear(2022);
-//        book.setPublisher();
+    void setUp() {
+        // Create a Publisher (required for Book)
+        publisher = new Publisher("Test Publisher", "123 Test St", "12345");
+        publisherDAO.insert(publisher);
+
+        // Create a Book (required for Copy)
+        book = new Book("Test Book", "John Doe", publisher, 2023, "123-456-789");
         bookDAO.insert(book);
 
+        // Create a Copy for the Book
         copy = new Copy(book, 1, "Available");
     }
 
-    @Test
-    void testCreateCopy() {
-        Copy copy = new Copy();
-        copy.setCopyNumber(1);
-        copy.setStatus("Available");
-        copyDAO.insert(copy);
-
-        Copy retrievedCopy = copyDAO.getById(copy.getId());
-        assertNotNull(retrievedCopy);
-        assertEquals(1, retrievedCopy.getCopyNumber());
-        assertEquals("Available", retrievedCopy.getStatus());
+    @AfterEach
+    void tearDown() {
+        // Clean up database after tests
+        copyDAO.getAll().forEach(c -> copyDAO.delete(c.getId()));
+        bookDAO.getAll().forEach(b -> bookDAO.delete(b.getId()));
+        publisherDAO.getAll().forEach(p -> publisherDAO.delete(p.getId()));
     }
 
-
+    /**
+     * Test basic context loading and DAO initialization.
+     */
     @Test
     void contextLoads() {
-        assertNotNull(copyDAO, "CopyDAO should not be null");
+        assertNotNull(copyDAO, "CopyDAO should be initialized.");
+        assertNotNull(bookDAO, "BookDAO should be initialized.");
     }
 
+    /**
+     * Test the Copy entity's constructor and field setting.
+     */
     @Test
-    void testConstructor() {
+    void testEntityConstructorsAndFields() {
         assertNotNull(copy.getBook());
-        assertEquals("Available", copy.getStatus());
         assertEquals(1, copy.getCopyNumber());
+        assertEquals("Available", copy.getStatus());
     }
 
+    /**
+     * Test utility methods in Copy entity for status updates.
+     */
     @Test
-    void testSetAndGetId() {
-        copy.setId(123);
-        assertEquals(123, copy.getId());
-    }
-
-    @Test
-    void testMarkAsBorrowedAndStatus() {
+    void testStatusUpdateMethods() {
         copy.markAsBorrowed();
         assertEquals("Borrowed", copy.getStatus());
-    }
 
-    @Test
-    void testMarkAsAvailable() {
+        copy.markAsLost();
+        assertEquals("Lost", copy.getStatus());
+
         copy.markAsAvailable();
-        assertTrue(copy.isAvailable());
+        assertEquals("Available", copy.getStatus());
     }
 
-    // --- Интеграционные тесты DAO в Spring Boot контексте ---
-    
+    /**
+     * Test DAO insert and retrieve copy by ID.
+     */
     @Test
-    void testInsertAndGetById() {
-        // Создаём новый экземпляр Copy
-        Copy newCopy = new Copy(book, 5, "Available");
+    void testInsertAndRetrieveCopy() {
+        copyDAO.insert(copy);
 
-        // Сохраняем объект через DAO
-        copyDAO.insert(newCopy);
-
-        // Проверяем, что объект можно извлечь
-        Copy fetchedCopy = copyDAO.getById(newCopy.getId());
+        Copy fetchedCopy = copyDAO.getById(copy.getId());
         assertNotNull(fetchedCopy);
-        assertEquals("Available", fetchedCopy.getStatus());
-
-        // Удалите запись после теста
-        copyDAO.delete(newCopy.getId());
+        assertEquals(copy.getCopyNumber(), fetchedCopy.getCopyNumber());
+        assertEquals(copy.getStatus(), fetchedCopy.getStatus());
     }
 
+    /**
+     * Test update functionality for a Copy entity.
+     */
     @Test
-    void testDelete() {
-        // Создаём новый экземпляр Copy
-        Copy newCopy = new Copy(book, 3, "Borrowed");
+    void testUpdateCopy() {
+        copyDAO.insert(copy);
 
-        // Сохраняем объект через DAO
-        copyDAO.insert(newCopy);
-        int copyId = newCopy.getId();
+        copy.setStatus("Borrowed");
+        copyDAO.update(copy);
 
-        // Убедимся, что запись присутствует
-        Copy fetchedCopy = copyDAO.getById(copyId);
-        assertNotNull(fetchedCopy);
-
-        // Удаляем запись
-        copyDAO.delete(copyId);
-
-        // Проверяем, что объект отсутствует в базе
-        fetchedCopy = copyDAO.getById(copyId);
-        assertNull(fetchedCopy);
+        Copy updatedCopy = copyDAO.getById(copy.getId());
+        assertEquals("Borrowed", updatedCopy.getStatus());
     }
 
+    /**
+     * Test delete functionality for a Copy entity.
+     */
     @Test
-    void testUpdate() {
-        // Создаём новый экземпляр Copy
-        Copy newCopy = new Copy(book, 7, "Reserved");
+    void testDeleteCopy() {
+        copyDAO.insert(copy);
 
-        // Сохраняем объект через DAO
-        copyDAO.insert(newCopy);
+        assertNotNull(copyDAO.getById(copy.getId()), "Copy should be present before deletion.");
 
-        // Обновляем статус
-        newCopy.markAsLost();
-        copyDAO.update(newCopy);
+        copyDAO.delete(copy.getId());
 
-        // Проверяем изменения
-        Copy updatedCopy = copyDAO.getById(newCopy.getId());
-        assertEquals("Lost", updatedCopy.getStatus());
-
-        // Удалите запись после теста
-        copyDAO.delete(newCopy.getId());
+        assertNull(copyDAO.getById(copy.getId()), "Copy should be removed after deletion.");
     }
 
+    /**
+     * Test retrieving all copies via DAO.
+     */
     @Test
-    void testGetAll() {
-        Copy copy1 = new Copy(book, 1, "Available");
+    void testGetAllCopies() {
         Copy copy2 = new Copy(book, 2, "Borrowed");
-
-        // Сохраняем обе копии
-        copyDAO.insert(copy1);
+        copyDAO.insert(copy);
         copyDAO.insert(copy2);
 
-        // Проверяем, что можно получить список объектов
-        List<Copy> allCopies = copyDAO.getAll();
-        assertTrue(allCopies.size() >= 2);
-
-        // Удаляем записи после тестов
-        copyDAO.delete(copy1.getId());
-        copyDAO.delete(copy2.getId());
+        List<Copy> copies = copyDAO.getAll();
+        assertEquals(2, copies.size());
     }
 
+    /**
+     * Test the getCount method for copies.
+     */
     @Test
     void testGetCount() {
-        // Начальный подсчёт записей
         long initialCount = copyDAO.getCount();
 
-        // Добавляем экземпляр для увеличения счётчика
-        Copy newCopy = new Copy(book, 8, "Available");
-        copyDAO.insert(newCopy);
+        Copy copy2 = new Copy(book, 2, "Borrowed");
+        copyDAO.insert(copy);
+        copyDAO.insert(copy2);
 
-        // Проверяем, что количество увеличилось
-        long newCount = copyDAO.getCount();
-        assertEquals(initialCount + 1, newCount);
+        assertEquals(initialCount + 2, copyDAO.getCount());
+    }
 
-        // Удаляем запись после теста
-        copyDAO.delete(newCopy.getId());
+    /**
+     * Test invalid creation of a Copy without a valid Book.
+     */
+    @Test
+    void testInsertCopyWithNoBook() {
+        Copy invalidCopy = new Copy(new Book(), 1, "Available");
+        assertThrows(Exception.class, () -> copyDAO.insert(invalidCopy), "Should throw an error for missing Book foreign key.");
     }
 }

@@ -1,6 +1,7 @@
 package com.library.library_management.data.dao;
 
 import com.library.library_management.data.entities.Book;
+import com.library.library_management.data.entities.CopyStatus;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
@@ -49,5 +50,16 @@ public class BookDAO implements DAO<Book> {
     public long getCount() {
         Long count = entityManager.createQuery("SELECT COUNT(b) FROM Book b", Long.class).getSingleResult();
         return count.intValue();
+    }
+
+    public List<Object[]> findBooksWithAvailableCopies() {
+        return entityManager.createQuery(
+                        "SELECT b, COUNT(c) AS COPIES " +
+                                "FROM Book b " +
+                                "JOIN b.copies c " +
+                                "WHERE c.status = :status " +
+                                "GROUP BY b", Object[].class)
+                .setParameter("status", CopyStatus.AVAILABLE.getName())
+                .getResultList();
     }
 }

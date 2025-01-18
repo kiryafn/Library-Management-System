@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/css/add-update.css">
 </head>
 <body>
-<h1>Update Publisher</h1>
+<h1>Update User</h1>
 <form th:action="@{/persons/update}" th:object="${person}" method="post">
     <!-- Скрытое поле для ID -->
     <input type="hidden" th:field="*{id}" />

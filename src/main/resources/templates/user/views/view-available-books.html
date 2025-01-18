@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap">
+    <link rel="stylesheet" href="/css/show.css">
+    <title>Books</title>
+</head>
+<body>
+<h1 class="header-title">Books</h1>
+<!-- Таблица -->
+<div class="table-container">
+    <table class="styled-table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Year</th>
+            <th>Publisher</th>
+            <th>Number of copies</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="el, iter : ${books}">
+            <td th:text="${iter.index + 1}"></td>
+            <td th:text="${el.book.getTitle()}"></td>
+            <td th:text="${el.book.getAuthor()}"></td>
+            <td th:text="${el.book.getPublicationYear()}"></td>
+            <td th:text="${el.book.getPublisher().getName()}"></td>
+            <td th:text="${el.availableCopies}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

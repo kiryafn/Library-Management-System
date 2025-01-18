@@ -1,4 +1,4 @@
-package com.library.library_management.data.presentation.controllers;
+package com.library.library_management.data.presentation.controllers.admin;
 
 import com.library.library_management.data.dao.BookDAO;
 import com.library.library_management.data.dao.PublisherDAO;
@@ -25,7 +25,7 @@ public class BookController {
     public String showBooks(Model model) {
         List<Book> books = bookDAO.getAll();
         model.addAttribute("books", books);
-        return "views/view-book";
+        return "admin/views/view-book";
     }
 
     @PostMapping("/delete/{id}")
@@ -39,7 +39,7 @@ public class BookController {
         Book book = bookDAO.getById(id);
         model.addAttribute("book", book);
         model.addAttribute("publishers", publisherDAO.getAll());
-        return "updates/update-book";
+        return "admin/updates/update-book";
     }
 
     @PostMapping("/update")
@@ -52,7 +52,7 @@ public class BookController {
     public String showAddForm(Model model) {
         model.addAttribute("book", new Book());
         model.addAttribute("publishers", publisherDAO.getAll());
-        return "adds/add-book";
+        return "admin/adds/add-book";
     }
 
     @PostMapping("/add")

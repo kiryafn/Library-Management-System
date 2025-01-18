@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Copy</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap">
+    <link rel="stylesheet" href="/css/add-update.css">
+</head>
+<body>
+<h1>Update Copy</h1>
+<form th:action="@{/copies/update}" th:object="${copy}" method="post">
+    <!-- Скрытое поле для ID -->
+    <input type="hidden" th:field="*{id}" />
+
+    <!-- Выбор книги -->
+    <div>
+        <label for="book">Book:</label>
+        <select th:field="*{book.id}" id="book" required>
+            <option th:each="book : ${books}"
+                    th:value="${book.id}"
+                    th:text="${book.title}">
+            </option>
+        </select>
+    </div>
+
+    <!-- Поле для ввода номера копии -->
+    <div>
+        <label for="copyNumber">Copy Number:</label>
+        <input type="number" th:field="*{copyNumber}" id="copyNumber" required min="1" />
+    </div>
+
+    <!-- Поле для ввода статуса -->
+    <div>
+        <label for="status">Status:</label>
+        <select th:field="*{status}" id="status" required>
+            <option th:each="status : ${statuses}"
+                    th:value="${status}"
+                    th:text="${status}">
+            </option>
+        </select>
+    </div>
+
+    <!-- Кнопка для отправки формы -->
+    <button type="submit">Update Copy</button>
+</form>
+</body>
+</html>

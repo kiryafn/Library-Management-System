@@ -1,4 +1,4 @@
-package com.library.library_management.data.presentation.controllers;
+package com.library.library_management.data.presentation.controllers.admin;
 
 import com.library.library_management.data.dao.PublisherDAO;
 import com.library.library_management.data.entities.Publisher;
@@ -22,7 +22,7 @@ public class PublisherController {
     public String showPublishers(Model model) {
         List<Publisher> publishers = publisherDAO.getAll();
         model.addAttribute("publishers", publishers);
-        return "views/view-publisher";
+        return "admin/views/view-publisher";
     }
 
     @PostMapping("/delete/{id}")
@@ -35,7 +35,7 @@ public class PublisherController {
     public String showUpdateForm(@PathVariable("id") int id, Model model) {
         Publisher publisher = publisherDAO.getById(id);
         model.addAttribute("publisher", publisher);
-        return "updates/update-publisher";
+        return "admin/updates/update-publisher";
     }
 
     @PostMapping("/update")
@@ -49,7 +49,7 @@ public class PublisherController {
     @GetMapping("/add")
     public String showAddForm(Model model) {
         model.addAttribute("publisher", new Publisher());
-        return "adds/add-publisher";
+        return "admin/adds/add-publisher";
     }
 
     // Обработка добавления нового издателя

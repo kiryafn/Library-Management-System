@@ -1,14 +1,9 @@
-package com.library.library_management.data.presentation.controllers;
+package com.library.library_management.data.presentation.controllers.admin;
 
-import com.library.library_management.data.dao.BookDAO;
 import com.library.library_management.data.dao.PersonDAO;
-import com.library.library_management.data.dao.PublisherDAO;
-import com.library.library_management.data.entities.Book;
 import com.library.library_management.data.entities.Person;
-import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,7 +22,7 @@ public class PersonController {
     public String showPersons(Model model) {
         List<Person> persons = personDAO.getAll();
         model.addAttribute("persons", persons);
-        return "views/view-person";
+        return "admin/views/view-person";
     }
 
     @PostMapping("/delete/{id}")
@@ -40,7 +35,7 @@ public class PersonController {
     public String showUpdateForm(@PathVariable("id") int id, Model model) {
         Person person = personDAO.getById(id);
         model.addAttribute("person", person);
-        return "updates/update-person";
+        return "admin/updates/update-person";
     }
 
     @PostMapping("/update")
@@ -52,11 +47,11 @@ public class PersonController {
     @GetMapping("/add")
     public String showAddForm(Model model) {
         model.addAttribute("person", new Person());
-        return "adds/add-person";
+        return "admin/adds/add-person";
     }
 
     @PostMapping("/add")
-    public String addPerson(Person person, Model model) {
+    public String addPerson(Person person) {
         personDAO.insert(person);
         return "redirect:/persons";
     }

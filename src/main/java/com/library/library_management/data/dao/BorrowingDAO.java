@@ -50,4 +50,16 @@ public class BorrowingDAO implements DAO<Borrowing> {
         Long count = entityManager.createQuery("SELECT COUNT(b) FROM Borrowing b", Long.class).getSingleResult();
         return count.intValue();
     }
+
+    public List<Borrowing> getByUserId(String personId) {
+        try {
+            Integer parsedId = Integer.parseInt(personId);
+
+            return entityManager.createQuery("SELECT b FROM Borrowing b WHERE b.person.id = :personId", Borrowing.class)
+                    .setParameter("personId", parsedId)
+                    .getResultList();
+        } catch (NumberFormatException e) {
+            return List.of();
+        }
+    }
 }

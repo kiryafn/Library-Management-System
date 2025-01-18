@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard - Library System</title>
+  <link rel="stylesheet" href="/css/main-page.css"> <!-- Подключение стилей -->
+</head>
+<body>
+  <!-- Заголовок страницы -->
+  <header>
+    <h1 class="header-title">Library System</h1>
+  </header>
+
+  <!-- Основной контент -->
+  <main>
+    <!-- Контейнер для кнопок -->
+    <div class="role-buttons" style="text-align: center; margin-top: 50px;">
+      <a class="add-btn" th:href="@{'/user/books'}">All books</a>
+      <a class="add-btn" th:href="@{'/user/available-books'}">Available books</a>
+      <a class="add-btn" th:href="@{'/user/' + ${userId} + '/borrowings'}">My Borrowings</a>
+    </div>
+  </main>
+</body>
+</html>

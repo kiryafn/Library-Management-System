@@ -50,4 +50,10 @@ public class PersonDAO implements DAO<Person> {
         Long count = entityManager.createQuery("SELECT COUNT(u) FROM Person u", Long.class).getSingleResult();
         return count.intValue();
     }
+
+    public Person getByEmail(String email) {
+        return entityManager.createQuery("SELECT u FROM Person u WHERE u.email = :email", Person.class)
+                .setParameter("email", email)
+                .getSingleResult();
+    }
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Главная страница</title>
+  <link rel="stylesheet" href="/css/main-page.css"> <!-- Подключение CSS -->
+</head>
+<body>
+<h1>Выберите режим для входа</h1>
+
+<!-- Кнопки выбора режима -->
+<div class="role-buttons">
+  <button class="librarian" onclick="enterAsLibrarian()">Режим Библиотекаря</button>
+  <button class="user" onclick="showEmailForm()">Режим Пользователя</button>
+</div>
+
+<!-- Форма для ввода email -->
+<div class="email-form" id="email-form">
+  <form action="/user" method="post">
+    <label for="email">Введите вашу почту:</label>
+    <input type="email" id="email" name="email" placeholder="example@example.com" required/>
+    <button type="submit" class="user">Войти</button>
+  </form>
+</div>
+
+<script src="/js/user_interaction_handlers.js"></script> <!-- Подключение JavaScript -->
+</body>
+</html>

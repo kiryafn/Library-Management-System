@@ -1,0 +1,76 @@
+/* Анимированный градиентный фон для страниц */
+.gradient-background {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #c9b4ff, #8942ff, #4b00bd, #19004c);
+    background-size: 200% 200%;
+    font-family: Arial, sans-serif;
+    color: white;
+    animation: moveBackground 15s infinite alternate;
+}
+
+/* Анимация для фона */
+@keyframes moveBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Центрирование контента на странице */
+.centered-content {
+    text-align: center;
+}
+
+.centered-content h1 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+}
+
+/* Контейнеры для кнопок */
+.button-container, .button-grid {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.button-grid {
+    flex-wrap: wrap;
+    max-width: 600px;
+    margin: auto;
+}
+
+/* Оформление кнопок */
+.btn {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 1.2rem;
+    color: white;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    border-radius: 8px;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+
+/* Сброс стандартных отступов и размеров */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Избегаем горизонтального скроллинга */
+}

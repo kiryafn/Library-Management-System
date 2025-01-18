@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap">
+    <link rel="stylesheet" href="/css/show.css">
+    <title>Books</title>
+</head>
+<body>
+<h1 class="header-title">Books</h1>
+    <!-- Таблица -->
+    <div class="table-container">
+        <table class="styled-table">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Year</th>
+                <th>Publisher</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="el : ${books}">
+                    <td th:text="${el.getTitle()}"></td>
+                    <td th:text="${el.getAuthor()}"></td>
+                    <td th:text="${el.getPublicationYear()}"></td>
+                    <td th:text="${el.getPublisher().getName()}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

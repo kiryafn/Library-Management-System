@@ -59,7 +59,7 @@ public class BookDAO implements DAO<Book> {
                                 "JOIN b.copies c " +
                                 "WHERE c.status = :status " +
                                 "GROUP BY b", Object[].class)
-                .setParameter("status", CopyStatus.AVAILABLE.getName())
+                .setParameter("status", CopyStatus.Available.getName())
                 .getResultList();
     }
 }

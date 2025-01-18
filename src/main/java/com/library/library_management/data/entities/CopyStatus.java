@@ -1,9 +1,9 @@
 package com.library.library_management.data.entities;
 
 public enum CopyStatus {
-    AVAILABLE("Available"),
-    BORROWED("Borrowed"),
-    RESERVED("Reserved"),
+    Available("Available"),
+    Borrowed("Borrowed"),
+    Reserved("Reserved"),
     LOST("Lost");
 
     String name;

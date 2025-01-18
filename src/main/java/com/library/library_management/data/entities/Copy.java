@@ -62,19 +62,19 @@ public class Copy {
 
     // Удобные методы для работы со статусами
     public boolean isAvailable() {
-        return this.status == CopyStatus.AVAILABLE.getName();
+        return this.status == CopyStatus.Available.getName();
     }
 
     public void markAsAvailable() {
-        this.status = CopyStatus.AVAILABLE.getName();
+        this.status = CopyStatus.Available.getName();
     }
 
     public void markAsBorrowed() {
-        this.status = CopyStatus.BORROWED.getName();
+        this.status = CopyStatus.Borrowed.getName();
     }
 
     public void markAsReserved() {
-        this.status = CopyStatus.RESERVED.getName();
+        this.status = CopyStatus.Reserved.getName();
     }
 
     public void markAsLost() {

@@ -6,7 +6,7 @@ const showEmailForm = () => {
 
 // Переход в режим библиотекаря
 const enterAsLibrarian = () => {
-  window.location.href = '/tablesr'; // Редирект на маршрут для библиотекаря
+  window.location.href = '/tables';
 };
 
 // Редирект к пользователю по email

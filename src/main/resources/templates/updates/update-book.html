@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Book</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap">
+    <link rel="stylesheet" href="/css/add-update.css">
+</head>
+<body>
+<h1>Update Book</h1>
+<form th:action="@{/books/update}" th:object="${book}" method="post">
+    <!-- Скрытое поле для ID книги -->
+    <input type="hidden" th:field="*{id}" />
+
+    <!-- Поле для заголовка книги -->
+    <div>
+        <label for="title">Title:</label>
+        <input type="text" th:field="*{title}" id="title" required/>
+    </div>
+
+    <!-- Поле для автора книги -->
+    <div>
+        <label for="author">Author:</label>
+        <input type="text" th:field="*{author}" id="author" required/>
+    </div>
+
+    <!-- Поле для выбора издателя -->
+    <div>
+        <label for="publisher">Publisher:</label>
+        <select id="publisher" th:field="*{publisher.id}">
+            <option th:each="publisher : ${publishers}"
+                    th:value="${publisher.id}"
+                    th:text="${publisher.name}"
+                    th:selected="${book?.publisher?.id == publisher.id}">Publisher</option>
+        </select>
+    </div>
+
+    <!-- Поле для указания года публикации -->
+    <div>
+        <label for="publicationYear">Publication Year:</label>
+        <input type="number" th:field="*{publicationYear}" id="publicationYear" min="0" required/>
+    </div>
+
+    <!-- Поле для ввода ISBN -->
+    <div>
+        <label for="isbn">ISBN:</label>
+        <input type="text" th:field="*{isbn}" id="isbn" required/>
+    </div>
+
+    <!-- Кнопки для управления -->
+    <div class="form-actions">
+        <button type="submit" class="submit-btn">Update Book</button>
+        <button type="button" class="cancel-btn" th:onclick="|location.href='/books'|">Cancel</button>
+    </div>
+</form>
+</body>
+</html>

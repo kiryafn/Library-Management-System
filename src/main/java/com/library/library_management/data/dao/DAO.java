@@ -5,7 +5,6 @@ import jakarta.transaction.Transactional;
 import java.util.List;
 
 public interface DAO<Entity> {
-
     void insert(Entity t);
 
     void delete(int id);

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Publisher</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap">
+    <link rel="stylesheet" href="/css/add-update.css">
+</head>
+<body>
+<h1>Update Publisher</h1>
+<form th:action="@{/publishers/update}" th:object="${publisher}" method="post">
+    <!-- Скрытое поле для ID -->
+    <input type="hidden" th:field="*{id}" />
+
+    <!-- Поле для ввода имени -->
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" th:field="*{name}" id="name" />
+    </div>
+
+    <!-- Поле для ввода адреса -->
+    <div>
+        <label for="address">Address:</label>
+        <input type="text" th:field="*{address}" id="address" />
+    </div>
+
+    <!-- Поле для ввода номера телефона -->
+    <div>
+        <label for="phonenumber">Phone Number:</label>
+        <input type="text" th:field="*{phonenumber}" id="phonenumber" />
+    </div>
+
+    <!-- Кнопка для отправки формы -->
+    <button type="submit">Update Publisher</button>
+</form>
+</body>
+</html>

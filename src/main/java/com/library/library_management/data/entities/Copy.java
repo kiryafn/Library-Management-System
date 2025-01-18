@@ -79,6 +79,6 @@ public class Copy {
     }
 
     public void markAsLost() {
-        this.status = CopyStatus.RESERVED;
+        this.status = CopyStatus.LOST;
     }
 }

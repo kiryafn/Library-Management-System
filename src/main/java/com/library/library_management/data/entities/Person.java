@@ -1,5 +1,7 @@
 package com.library.library_management.data.entities;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
 
 import java.util.List;
 
@@ -22,10 +24,10 @@ public class Person {
     @Column
     private String address;
 
-    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "person")
     private List<Borrowing> borrowings;
 
-    @OneToOne(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(mappedBy = "person")
     private Librarian librarian;
 
     public Person() {}

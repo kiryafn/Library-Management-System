@@ -28,7 +28,7 @@ public class Book {
     @Column(nullable = false, unique = true)
     private String isbn;
 
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "book")
     private List<Copy> copies;
 
     public Book() {}
@@ -96,6 +96,11 @@ public class Book {
     public void setCopies(List<Copy> copies) {
         this.copies = copies;
     }
+
+    public Integer getNumberOfCopies() {
+        return copies.size();
+    }
+
 
 
 }

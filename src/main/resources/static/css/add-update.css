@@ -1,0 +1,133 @@
+/* Основные стили для HTML и BODY */
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #c9b4ff, #8942ff, #4b00bd, #19004c); /* Градиент */
+    background-size: 200% 200%;
+    animation: gradient-animation 15s infinite alternate; /* Анимация градиента */
+}
+
+/* Анимация для градиента */
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Заголовок */
+h1 {
+    color: white;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 2.5rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+/* Стили для формы */
+form {
+    width: 50%;
+    margin: 50px auto; /* Центрирование формы */
+    background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон */
+    border-radius: 15px;
+    padding: 20px 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Тень формы */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Легкая граница */
+}
+
+/* Стили для полей ввода и меток */
+form label {
+    display: block;
+    font-weight: 400;
+    font-size: 1rem;
+    color: white;
+    margin-bottom: 5px;
+}
+
+form input[type="text"] {
+    width: calc(100% - 20px); /* Ширина с учетом отступа */
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease; /* Плавный переход для интерактивности */
+}
+
+form input[type="text"]:focus {
+    outline: none;
+    border: 1px solid #8942ff;
+    box-shadow: 0 0 5px rgba(137, 66, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Стили для кнопки */
+form button[type="submit"] {
+    padding: 12px 25px;
+    background-color: #4CAF50; /* Основной цвет кнопки */
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 0 auto; /* Центрирование кнопки */
+}
+
+form button[type="submit"]:hover {
+    background-color: #45a049; /* Цвет при наведении */
+    transform: scale(1.05);
+}
+
+form button[type="submit"]:active {
+    background-color: #39843b; /* Цвет при нажатии */
+    transform: scale(0.95);
+}
+
+form input[type="email"] {
+    width: calc(100% - 20px); /* Ширина с учетом отступов */
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease; /* Добавлен плавный переход */
+}
+
+form input[type="email"]:focus {
+    outline: none;
+    border: 1px solid #42a1ff;
+    box-shadow: 0 0 5px rgba(66, 161, 255, 0.5); /* Синий оттенок при фокусе */
+    background-color: rgba(255, 255, 255, 0.3); /* Слегка светлый фон при фокусе */
+}
+
+/* Стили для ввода электронной почты с ошибкой */
+form input[type="email"].error {
+    border: 1px solid #ff4d4d; /* Красная граница для ошибок */
+    box-shadow: 0 0 5px rgba(255, 77, 77, 0.5); /* Подсветка ошибки */
+    background-color: rgba(255, 77, 77, 0.1); /* Светло-красный фон */
+}
+
+form input[type="email"].error:focus {
+    border: 1px solid #ff1a1a;
+    box-shadow: 0 0 8px rgba(255, 26, 26, 0.6); /* Усиленная подсветка при ошибке */
+}

@@ -1,6 +1,8 @@
 package com.library.library_management.data.entities;
 
 import jakarta.persistence.*;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.HashSet;
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.Set;
 @Table(name = "PUBLISHER")
 public class Publisher {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID", nullable = false)
     private Integer id;
 
@@ -23,13 +25,19 @@ public class Publisher {
     @Column(name = "PHONENUMBER", length = 20)
     private String phonenumber;
 
-    @OneToMany(mappedBy = "publisher", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Book> books;
+    @OneToMany(mappedBy = "publisher")
+    private Set<Book> books;
 
     public Publisher() {}
 
     public Publisher(Integer id, String name, String address, String phonenumber) {
         this.id = id;
+        this.name = name;
+        this.address = address;
+        this.phonenumber = phonenumber;
+    }
+
+    public Publisher(String name, String address, String phonenumber) {
         this.name = name;
         this.address = address;
         this.phonenumber = phonenumber;
@@ -67,11 +75,11 @@ public class Publisher {
         this.phonenumber = phonenumber;
     }
 
-    public List<Book> getBooks() {
+    public Set<Book> getBooks() {
         return books;
     }
 
-    public void setBooks(List<Book> books) {
+    public void setBooks(Set<Book> books) {
         this.books = books;
     }
 

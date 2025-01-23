@@ -17,7 +17,7 @@ const redirectToUser = async (event) => {
   const email = emailInput.value.trim(); // Убираем лишние пробелы
 
   if (!validateEmail(email)) {
-    alert('Пожалуйста, введите корректный email.');
+    alert('Please enter a valid email.');
     emailInput.focus();
     return;
   }
@@ -42,14 +42,14 @@ const redirectToUser = async (event) => {
       window.location.href = response.url;
     } else if (response.ok) {
       const responseText = await response.text(); // Для обработки других возможных ответов (например, в случае ошибки)
-      console.log('Ответ сервера:', responseText);
-      alert('Ошибка: ' + responseText);
+      console.log('Server`s responce:', responseText);
+      alert('Error: ' + responseText);
     } else {
-      alert('Пользователь с указанным email не найден. Попробуйте снова.');
+      alert('A user with the specified email was not found. Please try again.');
     }
   } catch (error) {
-    console.error('Ошибка при выполнении запроса:', error);
-    alert('Что-то пошло не так. Пожалуйста, попробуйте позже.');
+    console.error('Error executing the request:', error);
+    alert('Something went wrong. Please try again later.');
   }
 };
 
@@ -68,12 +68,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (librarianBtn) {
     librarianBtn.addEventListener('click', enterAsLibrarian);
   } else {
-    console.error('Кнопка "Режим Библиотекаря" не найдена.');
+    console.error('The \'Librarian Mode\' button was not found.');
   }
 
   if (userBtn && emailForm) {
     emailForm.addEventListener('submit', redirectToUser);
   } else {
-    console.error('Кнопка "Режим Пользователя" или форма не найдена.');
+    console.error('The \'User Mode\' button or form was not found.');
   }
 });

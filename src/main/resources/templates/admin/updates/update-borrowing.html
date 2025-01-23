@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Borrowing</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap">
+    <link rel="stylesheet" href="/css/add-update.css">
+</head>
+<body>
+<h1>Update Borrowing</h1>
+<form th:action="@{/borrowings/update}" th:object="${borrowing}" method="post">
+    <!-- Скрытое поле для ID -->
+    <input type="hidden" th:field="*{id}" />
+
+    <!-- Поле Borrower -->
+    <div>
+        <label for="person">Borrower:</label>
+        <select th:field="*{person.id}" id="person" required>
+            <option th:each="person : ${persons}"
+                    th:value="${person.id}"
+                    th:text="${person.name}">
+            </option>
+        </select>
+    </div>
+
+    <!-- Поле Book Copy -->
+    <div>
+        <label for="copy">Book Copy:</label>
+        <select th:field="*{copy.id}" id="copy" required>
+            <option th:each="copy : ${copies}"
+                    th:value="${copy.id}"
+                    th:text="'Copy #' + ${copy.copyNumber} + ' - ' + ${copy.book.title}">
+            </option>
+        </select>
+    </div>
+
+    <!-- Поле для ввода даты выдачи -->
+    <div>
+        <label for="borrowDate">Borrow Date:</label>
+        <input type="date" th:field="*{borrowDate}" id="borrowDate" required />
+    </div>
+
+    <!-- Поле для ввода даты возврата -->
+    <div>
+        <label for="returnDate">Return Date:</label>
+        <input type="date" th:field="*{returnDate}" id="returnDate" />
+    </div>
+
+    <!-- Кнопки для действий -->
+    <div class="form-actions">
+        <button type="submit" class="submit-btn">Update Borrowing</button>
+        <button type="button" class="cancel-btn" th:onclick="|location.href='/borrowings'|">Cancel</button>
+    </div>
+</form>
+</body>
+</html>

@@ -4,6 +4,7 @@ import com.library.library_management.data.dao.BookDAO;
 import com.library.library_management.data.dao.CopyDAO;
 import com.library.library_management.data.entities.Copy;
 import com.library.library_management.data.entities.CopyStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,11 +30,13 @@ public class CopyController {
     /**
      * Data Access Object (DAO) for managing copy-related operations in the database.
      */
+    @Autowired
     private final CopyDAO copyDAO;
 
     /**
      * Data Access Object (DAO) for accessing book-related data.
      */
+    @Autowired
     private final BookDAO bookDAO;
 
     /**

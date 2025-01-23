@@ -28,7 +28,7 @@ public enum CopyStatus {
     /**
      * Status indicating that the copy has been reported as lost.
      */
-    LOST("Lost");
+    Lost("Lost");
 
     /**
      * A human-readable representation of the status.

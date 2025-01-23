@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Librarian</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap">
+    <link rel="stylesheet" href="/css/add-update.css">
+</head>
+<body>
+<h1>Add Librarian</h1>
+<form th:action="@{/librarians/add}" th:object="${librarian}" method="post">
+    <!-- Поле выбора связанного пользователя с использованием datalist -->
+    <div>
+        <label for="person">Person:</label>
+        <input list="usersList" id="person" th:field="*{person.id}" placeholder="Select person or type">
+        <datalist id="usersList">
+            <option th:each="person : ${users}"
+                    th:value="${person.id}"
+                    th:text="${person.name + ' (' + person.email + ')'}">
+            </option>
+        </datalist>
+    </div>
+
+    <!-- Поле для ввода даты трудоустройства -->
+    <div>
+        <label for="employmentDate">Employment Date:</label>
+        <input type="date" th:field="*{employmentDate}" id="employmentDate" />
+    </div>
+
+    <!-- Поле для ввода должности -->
+    <div>
+        <label for="position">Position:</label>
+        <input type="text" th:field="*{position}" id="position" />
+    </div>
+
+    <!-- Кнопка для отправки формы -->
+    <button type="submit">Add Librarian</button>
+</form>
+</body>
+</html>

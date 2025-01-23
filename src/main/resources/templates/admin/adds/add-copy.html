@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap">
+    <link rel="stylesheet" href="/css/add-update.css">
+    <title>Add Copy</title>
+</head>
+<body>
+<h1>Add Copy</h1>
+<form th:action="@{/copies/add}" th:object="${copy}" method="post">
+    <!-- Выбор книги -->
+    <div>
+        <label for="book">Book:</label>
+        <select th:field="*{book.id}" id="book" required>
+            <option th:each="book : ${books}"
+                    th:value="${book.id}"
+                    th:text="${book.title}">
+            </option>
+        </select>
+    </div>
+
+    <!-- Поле для ввода номера копии -->
+    <div>
+        <label for="copyNumber">Copy Number:</label>
+        <input type="number" th:field="*{copyNumber}" id="copyNumber" required min="1" />
+    </div>
+
+    <!-- Поле для ввода статуса -->
+    <div>
+        <label for="status">Status:</label>
+        <select th:field="*{status}" id="status" required>
+            <option th:each="status : ${statuses}"
+                    th:value="${status}"
+                    th:text="${status}">
+            </option>
+        </select>
+    </div>
+
+    <!-- Действия формы -->
+    <div class="form-actions">
+        <button type="submit" class="submit-btn">Save</button>
+        <button type="button" class="cancel-btn" th:onclick="|location.href='/copies'|">Cancel</button>
+    </div>
+</form>
+</body>
+</html>

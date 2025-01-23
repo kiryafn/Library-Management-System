@@ -188,6 +188,6 @@ public class Copy {
      * <p>Updates the status of the copy to "lost."</p>
      */
     public void markAsLost() {
-        this.status = CopyStatus.LOST.getName();
+        this.status = CopyStatus.Lost.getName();
     }
 }

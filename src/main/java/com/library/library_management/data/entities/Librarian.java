@@ -97,7 +97,7 @@ public class Librarian {
      *
      * @return the {@link Person} entity
      */
-    public Person getUser() {
+    public Person getPerson() {
         return person;
     }
 
@@ -106,7 +106,7 @@ public class Librarian {
      *
      * @param person the new {@link Person} entity
      */
-    public void setUser(Person person) {
+    public void setPerson(Person person) {
         this.person = person;
     }
 

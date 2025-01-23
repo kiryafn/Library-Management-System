@@ -1,6 +1,7 @@
 package com.library.library_management.data.dao;
 
 import com.library.library_management.data.entities.Copy;
+import com.library.library_management.data.entities.CopyStatus;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
@@ -104,5 +105,12 @@ public class CopyDAO implements DAO<Copy> {
     public long getCount() {
         Long count = entityManager.createQuery("SELECT COUNT(c) FROM Copy c", Long.class).getSingleResult();
         return count.intValue();
+    }
+
+    public List<Copy> getAllAvailable() {
+        String available = CopyStatus.Available.getName();
+        return entityManager.createQuery("SELECT c FROM Copy c WHERE c.status = :status", Copy.class)
+                .setParameter("status", available)
+                .getResultList();
     }
 }

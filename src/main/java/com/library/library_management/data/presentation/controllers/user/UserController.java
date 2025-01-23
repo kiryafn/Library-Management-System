@@ -1,6 +1,7 @@
 package com.library.library_management.data.presentation.controllers.user;
 
 import com.library.library_management.data.dao.BookDAO;
+import com.library.library_management.data.dao.BorrowingDAO;
 import com.library.library_management.data.dto.BookWithAvailableCopiesDTO;
 import com.library.library_management.data.entities.Book;
 import com.library.library_management.data.entities.Borrowing;
@@ -32,7 +33,7 @@ public class UserController {
     /**
      * Service for managing borrowing-related operations.
      */
-    private final BorrowingService borrowingService;
+    private final BorrowingDAO borrowingDAO;
 
     /**
      * Service for managing book-related operations and availability information.
@@ -47,13 +48,13 @@ public class UserController {
     /**
      * Constructs a new {@code UserController} and injects the required dependencies.
      *
-     * @param borrowingService the service used for borrowing-related operations
+     * @param borrowingDAO the service used for borrowing-related operations
      * @param bookDAO the DAO used for book-related database operations
      * @param bookService the service used for managing book availability and related operations
      */
     @Autowired
-    public UserController(BorrowingService borrowingService, BookDAO bookDAO, BookService bookService) {
-        this.borrowingService = borrowingService;
+    public UserController(BorrowingDAO borrowingDAO, BookDAO bookDAO, BookService bookService) {
+        this.borrowingDAO = borrowingDAO;
         this.bookDAO = bookDAO;
         this.bookService = bookService;
     }
@@ -109,7 +110,7 @@ public class UserController {
     /**
      * Displays a list of borrowings for a specific user.
      *
-     * <p>Retrieves all borrowings for the given user ID using {@link BorrowingService#findBorrowingsByUserId(String)}
+     * <p>Retrieves all borrowings for the given user ID using {@link BorrowingDAO#getByUserId(String)}
      * and adds both the borrowings and user ID to the {@link Model}. The results are used to render a detailed view
      * of the user's borrowings.</p>
      *
@@ -119,7 +120,7 @@ public class UserController {
      */
     @GetMapping("/{id}/borrowings")
     public String showUsersBorrowings(@PathVariable("id") String userId, Model model) {
-        List<Borrowing> borrowings = borrowingService.findBorrowingsByUserId(userId);
+        List<Borrowing> borrowings = borrowingDAO.getByUserId(userId);
         model.addAttribute("borrowings", borrowings);
         model.addAttribute("userId", userId);
         return "user/views/view-borrowings.html";

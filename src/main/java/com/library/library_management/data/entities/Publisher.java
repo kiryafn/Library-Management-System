@@ -19,7 +19,7 @@ public class Publisher {
      * The unique identifier of the publisher.
      *
      * <p>This field is the primary key of the {@code PUBLISHER} table and is auto-generated using
-     * the {@link GenerationType#AUTO} strategy.</p>
+     * the {@link GenerationType#IDENTITY} strategy.</p>
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

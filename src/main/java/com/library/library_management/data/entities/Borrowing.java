@@ -174,23 +174,4 @@ public class Borrowing {
     public void setReturnDate(LocalDate returnDate) {
         this.returnDate = returnDate;
     }
-
-    /**
-     * Returns a string representation of the borrowing record.
-     *
-     * <p>The string includes the ID, borrower name, copy number, borrowing date,
-     * and return date.</p>
-     *
-     * @return a string representation of the borrowing record
-     */
-    @Override
-    public String toString() {
-        return "Borrowing{" +
-                "id=" + id +
-                ", person=" + (person != null ? person.getName() : null) +
-                ", copy=" + (copy != null ? copy.getCopyNumber() : null) +
-                ", borrowDate=" + borrowDate +
-                ", returnDate=" + returnDate +
-                '}';
-    }
 }

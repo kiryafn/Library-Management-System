@@ -146,21 +146,4 @@ public class Librarian {
         this.position = position;
     }
 
-    /**
-     * Returns a string representation of the librarian.
-     *
-     * <p>The string includes details such as the librarian's ID, associated {@link Person},
-     * employment date, and position.</p>
-     *
-     * @return a string representation of the librarian
-     */
-    @Override
-    public String toString() {
-        return "Librarian{" +
-                "id=" + id +
-                ", person=" + person +
-                ", employmentDate=" + employmentDate +
-                ", position='" + position + '\'' +
-                '}';
-    }
 }

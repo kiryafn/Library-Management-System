@@ -229,21 +229,4 @@ public class Person {
         this.librarian = librarian;
     }
 
-    /**
-     * Returns a string representation of the person.
-     *
-     * <p>The string includes details such as the person's ID, name, email, phone number, and address.</p>
-     *
-     * @return a string representation of the person
-     */
-    @Override
-    public String toString() {
-        return "Person{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", address='" + address + '\'' +
-                '}';
-    }
 }

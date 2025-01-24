@@ -1,0 +1,8 @@
+com.library.library_management
+com.library.library_management.data.dao
+com.library.library_management.data.dto
+com.library.library_management.data.entities
+com.library.library_management.data.presentation.controllers
+com.library.library_management.data.presentation.controllers.admin
+com.library.library_management.data.presentation.controllers.user
+com.library.library_management.domain.services

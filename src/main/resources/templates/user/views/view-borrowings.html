@@ -17,8 +17,6 @@
             <th>#</th>
             <th>Title</th>
             <th>Copy</th>
-            <th>Email</th>
-            <th>Status</th>
             <th>Borrow Date</th>
             <th>Return Date</th>
         </tr>
@@ -28,10 +26,8 @@
             <td th:text="${iter.index + 1}"></td>
             <td th:text="${el.getCopy().getBook().getTitle()}"></td>
             <td th:text="${el.getCopy().getCopyNumber()}"></td>
-            <td th:text="${el.getPerson().getEmail()}"></td>
-            <td th:text="${el.getCopy().getStatus()}"></td>
             <td th:text="${#temporals.format(el.getBorrowDate(), 'dd.MM.yyyy')}"></td>
-            <td th:text="${#temporals.format(el.getReturnDate(), 'dd.MM.yyyy')}"></td>
+            <td th:text="${#temporals.format(el.getReturnDate(), 'dd.MM.yyyy')}  ?: 'Not Returned'"></td>
         </tr>
         </tbody>
     </table>

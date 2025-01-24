@@ -1,4 +1,4 @@
-package com.library.library_management;
+package com.library.library_management.entityTests;
 
 import com.library.library_management.data.dao.BookDAO;
 import com.library.library_management.data.dao.CopyDAO;
@@ -18,68 +18,60 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest // Enables Spring Boot Test Context
-@ActiveProfiles("test") // Uses "test" profile for the database
+@ActiveProfiles("test") // Use "test" profile for database configuration
 public class CopyTests {
 
     @Autowired
-    private CopyDAO copyDAO;
+    private CopyDAO copyDAO; // DAO for handling Copy entity operations
 
     @Autowired
-    private BookDAO bookDAO;
+    private BookDAO bookDAO; // DAO for handling Book entity operations
 
     @Autowired
-    private PublisherDAO publisherDAO;
+    private PublisherDAO publisherDAO; // DAO for handling Publisher entity operations
 
-    private Publisher publisher;
-    private Book book;
-    private Copy copy;
+    private Publisher publisher; // Test Publisher object
+    private Book book; // Test Book object
+    private Copy copy; // Test Copy object
 
     @BeforeEach
     void setUp() {
-        // Create a Publisher (required for Book)
+        // Setup test data: Create and insert a Publisher, a Book, and a Copy
         publisher = new Publisher("Test Publisher", "123 Test St", "12345");
         publisherDAO.insert(publisher);
 
-        // Create a Book (required for Copy)
         book = new Book("Test Book", "John Doe", publisher, 2023, "123-456-789");
         bookDAO.insert(book);
 
-        // Create a Copy for the Book
         copy = new Copy(book, 1, "Available");
     }
 
     @AfterEach
     void tearDown() {
-        // Clean up database after tests
+        // Clean up all created data after each test
         copyDAO.getAll().forEach(c -> copyDAO.delete(c.getId()));
         bookDAO.getAll().forEach(b -> bookDAO.delete(b.getId()));
         publisherDAO.getAll().forEach(p -> publisherDAO.delete(p.getId()));
     }
 
-    /**
-     * Test basic context loading and DAO initialization.
-     */
     @Test
     void contextLoads() {
-        assertNotNull(copyDAO, "CopyDAO should be initialized.");
-        assertNotNull(bookDAO, "BookDAO should be initialized.");
+        // Ensure the DAO components are properly initialized by the Spring Context
+        assertNotNull(copyDAO);
+        assertNotNull(bookDAO);
     }
 
-    /**
-     * Test the Copy entity's constructor and field setting.
-     */
     @Test
     void testEntityConstructorsAndFields() {
+        // Verify that Copy fields are correctly set through its constructor
         assertNotNull(copy.getBook());
         assertEquals(1, copy.getCopyNumber());
         assertEquals("Available", copy.getStatus());
     }
 
-    /**
-     * Test utility methods in Copy entity for status updates.
-     */
     @Test
     void testStatusUpdateMethods() {
+        // Test entity methods for updating Copy status
         copy.markAsBorrowed();
         assertEquals("Borrowed", copy.getStatus());
 
@@ -90,11 +82,9 @@ public class CopyTests {
         assertEquals("Available", copy.getStatus());
     }
 
-    /**
-     * Test DAO insert and retrieve copy by ID.
-     */
     @Test
     void testInsertAndRetrieveCopy() {
+        // Test inserting a Copy and retrieving it by its ID
         copyDAO.insert(copy);
 
         Copy fetchedCopy = copyDAO.getById(copy.getId());
@@ -103,11 +93,9 @@ public class CopyTests {
         assertEquals(copy.getStatus(), fetchedCopy.getStatus());
     }
 
-    /**
-     * Test update functionality for a Copy entity.
-     */
     @Test
     void testUpdateCopy() {
+        // Test updating the status of an inserted Copy
         copyDAO.insert(copy);
 
         copy.setStatus("Borrowed");
@@ -117,25 +105,21 @@ public class CopyTests {
         assertEquals("Borrowed", updatedCopy.getStatus());
     }
 
-    /**
-     * Test delete functionality for a Copy entity.
-     */
     @Test
     void testDeleteCopy() {
+        // Test deleting a Copy and ensuring it no longer exists
         copyDAO.insert(copy);
 
-        assertNotNull(copyDAO.getById(copy.getId()), "Copy should be present before deletion.");
+        assertNotNull(copyDAO.getById(copy.getId())); // Check existence before delete
 
         copyDAO.delete(copy.getId());
 
-        assertNull(copyDAO.getById(copy.getId()), "Copy should be removed after deletion.");
+        assertNull(copyDAO.getById(copy.getId())); // Verify deletion
     }
 
-    /**
-     * Test retrieving all copies via DAO.
-     */
     @Test
     void testGetAllCopies() {
+        // Test fetching all copies from the database
         Copy copy2 = new Copy(book, 2, "Borrowed");
         copyDAO.insert(copy);
         copyDAO.insert(copy2);
@@ -144,11 +128,9 @@ public class CopyTests {
         assertEquals(2, copies.size());
     }
 
-    /**
-     * Test the getCount method for copies.
-     */
     @Test
     void testGetCount() {
+        // Test the getCount method for copies in the database
         long initialCount = copyDAO.getCount();
 
         Copy copy2 = new Copy(book, 2, "Borrowed");
@@ -158,12 +140,10 @@ public class CopyTests {
         assertEquals(initialCount + 2, copyDAO.getCount());
     }
 
-    /**
-     * Test invalid creation of a Copy without a valid Book.
-     */
     @Test
     void testInsertCopyWithNoBook() {
+        // Test behavior when inserting a Copy with no associated Book
         Copy invalidCopy = new Copy(new Book(), 1, "Available");
-        assertThrows(Exception.class, () -> copyDAO.insert(invalidCopy), "Should throw an error for missing Book foreign key.");
+        assertThrows(Exception.class, () -> copyDAO.insert(invalidCopy)); // Expect an exception due to foreign key constraint
     }
 }

@@ -1,4 +1,4 @@
-package com.library.library_management;
+package com.library.library_management.entityTests;
 
 import com.library.library_management.data.dao.LibrarianDAO;
 import com.library.library_management.data.dao.PersonDAO;
@@ -10,26 +10,25 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-
 import java.time.LocalDate;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest // Enables Spring Boot Test Context
-@ActiveProfiles("test") // Uses "test" profile for the database
+@ActiveProfiles("test") // Uses "test" database profile
 public class LibrarianTests {
 
     @Autowired
-    private LibrarianDAO librarianDAO;
+    private LibrarianDAO librarianDAO; // DAO for Librarian
 
     @Autowired
-    private PersonDAO personDAO;
+    private PersonDAO personDAO; // DAO for Person
 
-    private Person person;
-    private Librarian librarian;
+    private Person person; // Test Person
+    private Librarian librarian; // Test Librarian
 
     @BeforeEach
     public void setUp() {
+        // Prepare test data: Person and Librarian
         person = new Person("John Doe", "john.doe@example.com", "123456789", "123 Test St");
         personDAO.insert(person);
 
@@ -38,21 +37,24 @@ public class LibrarianTests {
 
     @AfterEach
     public void tearDown() {
+        // Clean up data after tests
         librarianDAO.getAll().forEach(l -> librarianDAO.delete(l.getId()));
         personDAO.getAll().forEach(p -> personDAO.delete(p.getId()));
     }
 
     @Test
     public void testInsertAndGetById() {
+        // Test inserting and retrieving Librarian by ID
         librarianDAO.insert(librarian);
 
         Librarian fetchedLibrarian = librarianDAO.getById(librarian.getId());
         assertNotNull(fetchedLibrarian);
-        assertEquals(person.getName(), fetchedLibrarian.getUser().getName());
+        assertEquals(person.getName(), fetchedLibrarian.getPerson().getName());
     }
 
     @Test
     public void testGetAll() {
+        // Test retrieving all Librarians
         librarianDAO.insert(librarian);
 
         assertEquals(1, librarianDAO.getAll().size());
@@ -60,6 +62,7 @@ public class LibrarianTests {
 
     @Test
     public void testUpdate() {
+        // Test updating Librarian's position
         librarianDAO.insert(librarian);
 
         librarian.setPosition("Assistant Librarian");
@@ -71,6 +74,7 @@ public class LibrarianTests {
 
     @Test
     public void testDelete() {
+        // Test deleting Librarian
         librarianDAO.insert(librarian);
 
         assertNotNull(librarianDAO.getById(librarian.getId()));

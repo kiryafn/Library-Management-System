@@ -1,4 +1,4 @@
-package com.library.library_management;
+package com.library.library_management.entityTests;
 
 import com.library.library_management.data.dao.*;
 import com.library.library_management.data.entities.*;
@@ -15,53 +15,51 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest // Enables Spring Boot Test Context
-@ActiveProfiles("test")
+@ActiveProfiles("test") // Use "test" profile for database configuration
 public class BorrowingTests {
 
     @Autowired
-    private BorrowingDAO borrowingDAO;
+    private BorrowingDAO borrowingDAO; // DAO for Borrowing operations
 
     @Autowired
-    private PersonDAO personDAO;
+    private PersonDAO personDAO; // DAO for Person operations
 
     @Autowired
-    private CopyDAO copyDAO;
+    private CopyDAO copyDAO; // DAO for Copy operations
 
     @Autowired
-    private BookDAO bookDAO;
+    private BookDAO bookDAO; // DAO for Book operations
 
     @Autowired
-    private PublisherDAO publisherDAO;
+    private PublisherDAO publisherDAO; // DAO for Publisher operations
 
-    private Person person;
-    private Copy copy;
-    private Book book;
-    private Borrowing borrowing;
-    private Publisher publisher;
+    private Person person; // Test Person object
+    private Copy copy; // Test Copy object
+    private Book book; // Test Book object
+    private Borrowing borrowing; // Test Borrowing object
+    private Publisher publisher; // Test Publisher object
 
     @BeforeEach
     public void setUp() {
+        // Prepare data: Publisher, Book, Person, Copy, and Borrowing
         publisher = new Publisher("Test Publisher", "123 Test St", "12345");
         publisherDAO.insert(publisher);
 
-        // Создаем объект Book для связи с Copy
         book = new Book("Test Book", "Test Author", publisher, 2023, "123456789");
         bookDAO.insert(book);
 
-        // Создаем объект Person
         person = new Person("John Doe", "john.doe@example.com", "123456789", "123 Test St");
         personDAO.insert(person);
 
-        // Создаем Copy, связанный с Book
         copy = new Copy(book, 1, "Available");
         copyDAO.insert(copy);
 
-        // Создаем Borrowing
         borrowing = new Borrowing(person, copy, LocalDate.now(), null);
     }
 
     @AfterEach
     public void tearDown() {
+        // Clean up after tests
         borrowingDAO.getAll().forEach(b -> borrowingDAO.delete(b.getId()));
         copyDAO.getAll().forEach(c -> copyDAO.delete(c.getId()));
         bookDAO.getAll().forEach(b -> bookDAO.delete(b.getId()));
@@ -70,6 +68,7 @@ public class BorrowingTests {
 
     @Test
     public void testInsertAndGetById() {
+        // Test inserting and retrieving Borrowing by ID
         borrowingDAO.insert(borrowing);
 
         Borrowing fetchedBorrowing = borrowingDAO.getById(borrowing.getId());
@@ -80,6 +79,7 @@ public class BorrowingTests {
 
     @Test
     public void testGetAll() {
+        // Test retrieving all Borrowings
         borrowingDAO.insert(borrowing);
 
         List<Borrowing> borrowings = borrowingDAO.getAll();
@@ -88,6 +88,7 @@ public class BorrowingTests {
 
     @Test
     public void testUpdate() {
+        // Test updating Borrowing's return date
         borrowingDAO.insert(borrowing);
 
         borrowing.setReturnDate(LocalDate.now().plusDays(7));
@@ -100,6 +101,7 @@ public class BorrowingTests {
 
     @Test
     public void testDelete() {
+        // Test deleting Borrowing
         borrowingDAO.insert(borrowing);
 
         assertNotNull(borrowingDAO.getById(borrowing.getId()));

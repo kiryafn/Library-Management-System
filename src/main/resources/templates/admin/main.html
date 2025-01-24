@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap">
   <title>User Dashboard - Library System</title>
   <link rel="stylesheet" href="/css/main-page.css"> <!-- Подключение стилей -->
 </head>
@@ -15,13 +16,13 @@
   <!-- Основной контент -->
   <main>
     <!-- Контейнер для кнопок -->
-    <div class="buttons" style="text-align: center; margin-top: 50px;">
-      <a class="btn" th:href="@{'/books'}">Books</a>
-      <a class="btn" th:href="@{'/persons'}">Persons</a>
-      <a class="btn" th:href="@{'/borrowings'}">Borrowings</a>
-      <a class="btn" th:href="@{'/copies'}">Copies</a>
-      <a class="btn" th:href="@{'/librarians'}">Librariants</a>
-      <a class="btn" th:href="@{'/publishers'}">Publishers</a>
+    <div class="button-container" style="text-align: center; margin-top: 50px;">
+      <a class="button" th:href="@{'/books'}">Books</a>
+      <a class="button" th:href="@{'/persons'}">Persons</a>
+      <a class="button" th:href="@{'/borrowings'}">Borrowings</a>
+      <a class="button" th:href="@{'/copies'}">Copies</a>
+      <a class="button" th:href="@{'/librarians'}">Librariants</a>
+      <a class="button" th:href="@{'/publishers'}">Publishers</a>
     </div>
   </main>
 </body>

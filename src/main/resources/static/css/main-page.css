@@ -26,15 +26,13 @@ html, body {
 .header-title {
     color: white;
     text-align: center;
-    font-size: 3rem;
-    font-weight: 600;
-    margin: 40px 0;
+    margin: 50px;
+    font-size: 2.5rem;
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.buttons {
+.button-container {
     display: flex;
     justify-content: center; /* Центрирование по горизонтали */
     align-items: center; /* Центрирование по вертикали, если требуется */
@@ -44,33 +42,29 @@ html, body {
     text-align: center;
 }
 
-.btn {
+.button {
     display: inline-block;
-    text-decoration: none;
-    padding: 10px 20px;
-    margin: 10px;
+    padding: 15px 25px;
     font-size: 1.2rem;
     color: white;
-    background-color: rgba(75, 0, 189, 0.8);
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-transform: uppercase;
-    font-weight: 500;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    border-radius: 8px;
+    transition: transform 0.2s, background-color 0.2s;
 }
 
-.btn:hover {
-    background-color: #8942ff;
+.button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
     transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-.btn:active {
+.button:active {
     transform: scale(0.95);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
-.btn:focus {
+.button:focus {
     outline: none;
     box-shadow: 0 0 10px rgba(137, 66, 255, 0.6), 0 0 20px rgba(137, 66, 255, 0.4);
 }
@@ -79,6 +73,7 @@ html, body {
     display: none;
     flex-direction: column;
     align-items: center;
+    color: white;
 }
 
 .email-form input[type="email"] {

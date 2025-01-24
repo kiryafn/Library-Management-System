@@ -1,4 +1,4 @@
-package com.library.library_management;
+package com.library.library_management.entityTests;
 
 import com.library.library_management.data.dao.BookDAO;
 import com.library.library_management.data.dao.PublisherDAO;
@@ -13,8 +13,8 @@ import org.springframework.test.context.ActiveProfiles;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest // Enables Spring Boot Test Context
-@ActiveProfiles("test") // Uses "test" profile for the database
+@SpringBootTest
+@ActiveProfiles("test")
 public class BookTests {
 
     @Autowired
@@ -28,6 +28,7 @@ public class BookTests {
 
     @BeforeEach
     public void setUp() {
+        // Prepare test data: a Publisher and a Book
         publisher = new Publisher("Test Publisher", "123 Test St", "1234567890");
         publisherDAO.insert(publisher);
 
@@ -36,12 +37,14 @@ public class BookTests {
 
     @AfterEach
     public void tearDown() {
+        // Clean up after each test
         bookDAO.getAll().forEach(b -> bookDAO.delete(b.getId()));
         publisherDAO.getAll().forEach(p -> publisherDAO.delete(p.getId()));
     }
 
     @Test
     public void testInsertAndGetById() {
+        // Test inserting and retrieving a Book by ID
         bookDAO.insert(book);
 
         Book fetchedBook = bookDAO.getById(book.getId());
@@ -51,6 +54,7 @@ public class BookTests {
 
     @Test
     public void testGetAll() {
+        // Test retrieving all Books
         bookDAO.insert(book);
 
         assertEquals(1, bookDAO.getAll().size());
@@ -58,6 +62,7 @@ public class BookTests {
 
     @Test
     public void testUpdate() {
+        // Test updating a Book
         bookDAO.insert(book);
 
         book.setTitle("Updated Book Title");
@@ -69,6 +74,7 @@ public class BookTests {
 
     @Test
     public void testDelete() {
+        // Test deleting a Book
         bookDAO.insert(book);
 
         assertNotNull(bookDAO.getById(book.getId()));

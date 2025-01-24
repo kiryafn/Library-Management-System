@@ -17,7 +17,6 @@
             <th>Borrower Name</th>
             <th>Title</th>
             <th>Copy Number</th>
-            <th>Copy Status</th>
             <th>Borrow Date</th>
             <th>Return Date</th>
             <th></th>
@@ -29,7 +28,6 @@
             <td th:text="${borrowing.getPerson().getName()}"></td>
             <td th:text="${borrowing.getCopy().getBook().getTitle()}"></td>
             <td th:text="${borrowing.getCopy().getCopyNumber()}"></td>
-            <td th:text="${borrowing.getCopy().getStatus()}"></td>
             <td th:text="${borrowing.getBorrowDate()}"></td>
             <td th:text="${borrowing.getReturnDate()} ?: 'Not Returned'"></td>
 

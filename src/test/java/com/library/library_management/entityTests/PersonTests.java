@@ -1,4 +1,4 @@
-package com.library.library_management;
+package com.library.library_management.entityTests;
 
 import com.library.library_management.data.dao.PersonDAO;
 import com.library.library_management.data.entities.Person;
@@ -12,28 +12,30 @@ import org.springframework.test.context.ActiveProfiles;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest // Enables Spring Boot Test Context
-@ActiveProfiles("test") // Uses "test" profile for the database
+@ActiveProfiles("test") // Uses "test" database profile
 public class PersonTests {
 
     @Autowired
-    private PersonDAO personDAO;
+    private PersonDAO personDAO; // DAO for Person operations
 
-    private Person person;
+    private Person person; // Test Person object
 
     @BeforeEach
     public void setUp() {
+        // Prepare test data: a Person
         person = new Person("John Doe", "john.doe@example.com", "123456789", "123 Test St");
     }
 
     @AfterEach
     public void tearDown() {
+        // Clean up after tests
         personDAO.getAll().forEach(p -> personDAO.delete(p.getId()));
     }
 
     @Test
     public void testInsertAndGetById() {
+        // Test inserting and retrieving Person by ID
         personDAO.insert(person);
 
         Person fetchedPerson = personDAO.getById(person.getId());
@@ -43,6 +45,7 @@ public class PersonTests {
 
     @Test
     public void testGetAll() {
+        // Test retrieving all Persons
         personDAO.insert(person);
 
         List<Person> persons = personDAO.getAll();
@@ -51,6 +54,7 @@ public class PersonTests {
 
     @Test
     public void testUpdate() {
+        // Test updating Person's name
         personDAO.insert(person);
 
         person.setName("Jane Doe");
@@ -62,6 +66,7 @@ public class PersonTests {
 
     @Test
     public void testDelete() {
+        // Test deleting Person
         personDAO.insert(person);
 
         assertNotNull(personDAO.getById(person.getId()));

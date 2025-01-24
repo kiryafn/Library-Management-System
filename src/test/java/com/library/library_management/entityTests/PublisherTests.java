@@ -1,4 +1,4 @@
-package com.library.library_management;
+package com.library.library_management.entityTests;
 
 import com.library.library_management.data.dao.PublisherDAO;
 import com.library.library_management.data.entities.Publisher;
@@ -14,26 +14,29 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest // Enables Spring Boot Test Context
-@ActiveProfiles("test") // Uses "test" profile for the database
+@ActiveProfiles("test") // Uses "test" database profile
 public class PublisherTests {
 
     @Autowired
-    private PublisherDAO publisherDAO;
+    private PublisherDAO publisherDAO; // DAO for Publisher operations
 
-    private Publisher publisher;
+    private Publisher publisher; // Test Publisher entity
 
     @BeforeEach
     public void setUp() {
+        // Initialize test Publisher entity
         publisher = new Publisher("Test Publisher", "123 Test St", "1234567890");
     }
 
     @AfterEach
     public void tearDown() {
+        // Clean up after each test
         publisherDAO.getAll().forEach(p -> publisherDAO.delete(p.getId()));
     }
 
     @Test
     public void testInsertAndGetById() {
+        // Test inserting and retrieving a Publisher by ID
         publisherDAO.insert(publisher);
 
         Publisher fetchedPublisher = publisherDAO.getById(publisher.getId());
@@ -43,6 +46,7 @@ public class PublisherTests {
 
     @Test
     public void testGetAll() {
+        // Test retrieving all Publishers
         publisherDAO.insert(publisher);
 
         List<Publisher> publishers = publisherDAO.getAll();
@@ -51,6 +55,7 @@ public class PublisherTests {
 
     @Test
     public void testUpdate() {
+        // Test updating Publisher's name
         publisherDAO.insert(publisher);
 
         publisher.setName("Updated Publisher");
@@ -62,6 +67,7 @@ public class PublisherTests {
 
     @Test
     public void testDelete() {
+        // Test deleting a Publisher
         publisherDAO.insert(publisher);
 
         assertNotNull(publisherDAO.getById(publisher.getId()));

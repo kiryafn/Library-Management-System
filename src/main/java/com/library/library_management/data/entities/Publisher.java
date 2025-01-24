@@ -22,7 +22,7 @@ public class Publisher {
      * the {@link GenerationType#AUTO} strategy.</p>
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     private Integer id;
 

@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * Entity class representing a publisher in the library management system.
  *
- * <p>The {@code Publisher} entity stores information about publishing companies or individuals
+ * <p>The {@code PublisherRepository} entity stores information about publishing companies or individuals
  * responsible for publishing books. This class is mapped to the {@code PUBLISHER} table in the database
  * using JPA annotations. It maintains a one-to-many relationship with the {@link Book} entity, where
  * a publisher can have multiple books.</p>

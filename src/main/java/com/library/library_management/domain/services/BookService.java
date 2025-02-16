@@ -8,16 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Service class for managing operations related to books in the library management system.
- *
- * <p>The {@code BookService} acts as a bridge between the data access layer (DAO) and business logic,
- * providing functionality to retrieve book-related data, including books with their available copies.</p>
- *
- * <p>This class is annotated with {@link Service}, making it a Spring service component. It is responsible
- * for handling operations related to books and encapsulating the logic required to process and transform
- * data from the DAO into a usable format for other layers of the application.</p>
- */
 @Service
 public class BookService {
 

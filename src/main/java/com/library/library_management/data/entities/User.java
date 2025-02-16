@@ -17,7 +17,7 @@ import java.util.List;
  * associated with the person and whether the person has a librarian role.</p>
  */
 @Entity
-@Table(name = "Users")
+@Table(name = "USERS")
 public class User {
 
     /**

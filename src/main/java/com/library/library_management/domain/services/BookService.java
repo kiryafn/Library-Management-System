@@ -1,10 +1,7 @@
 package com.library.library_management.domain.services;
 
-import com.library.library_management.data.dao.BookDAO;
-import com.library.library_management.data.dto.BookWithAvailableCopiesDTO;
 import com.library.library_management.data.entities.Book;
 import com.library.library_management.data.repository.BookRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,7 +36,15 @@ public class BookService {
         bookRepository.delete(book);
     }
 
-    private void validateBook(Book book) {
+    public Book getById(Long id) {
+        return bookRepository.getById(id);
+    }
+
+    public List<Book> getAll() {
+        return bookRepository.findAll();
+    }
+
+private void validateBook(Book book)                                                                                            {
         if (book.getIsbn() == null || book.getIsbn().isEmpty()) {
             throw new IllegalArgumentException("ISBN can`t be empty.");
         }

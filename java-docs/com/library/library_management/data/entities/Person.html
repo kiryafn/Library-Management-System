@@ -95,7 +95,7 @@ loadScripts(document, 'script');</script>
 <h1 title="Class Person" class="title">Class Person</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance">com.library.library_management.data.entities.Person</div>
+<div class="inheritance">com.library.library_management.data.entities.User</div>
 </div>
 <section class="class-description" id="class-description">
 <div class="horizontal-scroll">
@@ -103,7 +103,7 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="annotations">@Entity
 </span><span class="modifiers">public class </span><span class="element-name type-name-label">Person</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Entity class representing a person in the library management system.
+<div class="block">Entity class representing a user in the library management system.
 
  <p>The <code>Person</code> entity stores user-specific details, which may represent
  a library user or a librarian. This class is mapped to the <code>PERSON</code> table
@@ -112,7 +112,7 @@ loadScripts(document, 'script');</script>
 
  <p>The class provides attributes for common user details such as name, email,
  phone number, and address. Additionally, it tracks the list of borrowings
- associated with the person and whether the person has a librarian role.</p></div>
+ associated with the user and whether the user has a librarian role.</p></div>
 </div>
 </section>
 <section class="summary">
@@ -153,72 +153,72 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAddress()" class="member-name-link">getAddress</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Gets the address of the person.</div>
+<div class="block">Gets the address of the user.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a><wbr>&lt;<a href="Borrowing.html" title="class in com.library.library_management.data.entities">Borrowing</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getBorrowings()" class="member-name-link">getBorrowings</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Gets the list of borrowings associated with the person.</div>
+<div class="block">Gets the list of borrowings associated with the user.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getEmail()" class="member-name-link">getEmail</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Gets the unique email address of the person.</div>
+<div class="block">Gets the unique email address of the user.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getId()" class="member-name-link">getId</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Gets the unique identifier of the person.</div>
+<div class="block">Gets the unique identifier of the user.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Librarian.html" title="class in com.library.library_management.data.entities">Librarian</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getLibrarian()" class="member-name-link">getLibrarian</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Gets the librarian entity associated with the person, if applicable.</div>
+<div class="block">Gets the librarian entity associated with the user, if applicable.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getName()" class="member-name-link">getName</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Gets the name of the person.</div>
+<div class="block">Gets the name of the user.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPhoneNumber()" class="member-name-link">getPhoneNumber</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Gets the phone number of the person.</div>
+<div class="block">Gets the phone number of the user.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setAddress(java.lang.String)" class="member-name-link">setAddress</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;address)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Sets the address of the person.</div>
+<div class="block">Sets the address of the user.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setBorrowings(java.util.List)" class="member-name-link">setBorrowings</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Borrowing.html" title="class in com.library.library_management.data.entities">Borrowing</a>&gt;&nbsp;borrowings)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Sets the list of borrowings associated with the person.</div>
+<div class="block">Sets the list of borrowings associated with the user.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setEmail(java.lang.String)" class="member-name-link">setEmail</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;email)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Sets the unique email address of the person.</div>
+<div class="block">Sets the unique email address of the user.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setId(java.lang.Integer)" class="member-name-link">setId</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;id)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Sets the unique identifier of the person.</div>
+<div class="block">Sets the unique identifier of the user.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setLibrarian(com.library.library_management.data.entities.Librarian)" class="member-name-link">setLibrarian</a><wbr>(<a href="Librarian.html" title="class in com.library.library_management.data.entities">Librarian</a>&nbsp;librarian)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Sets the librarian entity associated with the person.</div>
+<div class="block">Sets the librarian entity associated with the user.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setName(java.lang.String)" class="member-name-link">setName</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Sets the name of the person.</div>
+<div class="block">Sets the name of the user.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPhoneNumber(java.lang.String)" class="member-name-link">setPhoneNumber</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;phoneNumber)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Sets the phone number of the person.</div>
+<div class="block">Sets the phone number of the user.</div>
 </div>
 </div>
 </div>
@@ -257,10 +257,10 @@ loadScripts(document, 'script');</script>
 <div class="block">Constructs a new <a href="Person.html" title="class in com.library.library_management.data.entities"><code>Person</code></a> with the specified name, email, phone number, and address.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>name</code> - the name of the person</dd>
-<dd><code>email</code> - the unique email address of the person</dd>
-<dd><code>phoneNumber</code> - the phone number of the person</dd>
-<dd><code>address</code> - the address of the person</dd>
+<dd><code>name</code> - the name of the user</dd>
+<dd><code>email</code> - the unique email address of the user</dd>
+<dd><code>phoneNumber</code> - the phone number of the user</dd>
+<dd><code>address</code> - the address of the user</dd>
 </dl>
 </div>
 </section>
@@ -278,10 +278,10 @@ loadScripts(document, 'script');</script>
 <h3>getId</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a></span>&nbsp;<span class="element-name">getId</span>()</div>
-<div class="block">Gets the unique identifier of the person.</div>
+<div class="block">Gets the unique identifier of the user.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the ID of the person</dd>
+<dd>the ID of the user</dd>
 </dl>
 </div>
 </section>
@@ -291,10 +291,10 @@ loadScripts(document, 'script');</script>
 <h3>setId</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setId</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;id)</span></div>
-<div class="block">Sets the unique identifier of the person.</div>
+<div class="block">Sets the unique identifier of the user.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>id</code> - the new ID of the person</dd>
+<dd><code>id</code> - the new ID of the user</dd>
 </dl>
 </div>
 </section>
@@ -304,10 +304,10 @@ loadScripts(document, 'script');</script>
 <h3>getName</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getName</span>()</div>
-<div class="block">Gets the name of the person.</div>
+<div class="block">Gets the name of the user.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the name of the person</dd>
+<dd>the name of the user</dd>
 </dl>
 </div>
 </section>
@@ -317,10 +317,10 @@ loadScripts(document, 'script');</script>
 <h3>setName</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setName</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name)</span></div>
-<div class="block">Sets the name of the person.</div>
+<div class="block">Sets the name of the user.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>name</code> - the new name of the person</dd>
+<dd><code>name</code> - the new name of the user</dd>
 </dl>
 </div>
 </section>
@@ -330,10 +330,10 @@ loadScripts(document, 'script');</script>
 <h3>getEmail</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getEmail</span>()</div>
-<div class="block">Gets the unique email address of the person.</div>
+<div class="block">Gets the unique email address of the user.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the email address of the person</dd>
+<dd>the email address of the user</dd>
 </dl>
 </div>
 </section>
@@ -343,10 +343,10 @@ loadScripts(document, 'script');</script>
 <h3>setEmail</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setEmail</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;email)</span></div>
-<div class="block">Sets the unique email address of the person.</div>
+<div class="block">Sets the unique email address of the user.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>email</code> - the new email address of the person</dd>
+<dd><code>email</code> - the new email address of the user</dd>
 </dl>
 </div>
 </section>
@@ -356,10 +356,10 @@ loadScripts(document, 'script');</script>
 <h3>getPhoneNumber</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getPhoneNumber</span>()</div>
-<div class="block">Gets the phone number of the person.</div>
+<div class="block">Gets the phone number of the user.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the phone number of the person</dd>
+<dd>the phone number of the user</dd>
 </dl>
 </div>
 </section>
@@ -369,10 +369,10 @@ loadScripts(document, 'script');</script>
 <h3>setPhoneNumber</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setPhoneNumber</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;phoneNumber)</span></div>
-<div class="block">Sets the phone number of the person.</div>
+<div class="block">Sets the phone number of the user.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>phoneNumber</code> - the new phone number of the person</dd>
+<dd><code>phoneNumber</code> - the new phone number of the user</dd>
 </dl>
 </div>
 </section>
@@ -382,10 +382,10 @@ loadScripts(document, 'script');</script>
 <h3>getAddress</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getAddress</span>()</div>
-<div class="block">Gets the address of the person.</div>
+<div class="block">Gets the address of the user.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the address of the person, or <code>null</code> if not set</dd>
+<dd>the address of the user, or <code>null</code> if not set</dd>
 </dl>
 </div>
 </section>
@@ -395,10 +395,10 @@ loadScripts(document, 'script');</script>
 <h3>setAddress</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setAddress</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;address)</span></div>
-<div class="block">Sets the address of the person.</div>
+<div class="block">Sets the address of the user.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>address</code> - the new address of the person</dd>
+<dd><code>address</code> - the new address of the user</dd>
 </dl>
 </div>
 </section>
@@ -408,10 +408,10 @@ loadScripts(document, 'script');</script>
 <h3>getBorrowings</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Borrowing.html" title="class in com.library.library_management.data.entities">Borrowing</a>&gt;</span>&nbsp;<span class="element-name">getBorrowings</span>()</div>
-<div class="block">Gets the list of borrowings associated with the person.</div>
+<div class="block">Gets the list of borrowings associated with the user.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the list of <a href="Borrowing.html" title="class in com.library.library_management.data.entities"><code>Borrowing</code></a> instances linked to this person</dd>
+<dd>the list of <a href="Borrowing.html" title="class in com.library.library_management.data.entities"><code>Borrowing</code></a> instances linked to this user</dd>
 </dl>
 </div>
 </section>
@@ -421,10 +421,10 @@ loadScripts(document, 'script');</script>
 <h3>setBorrowings</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setBorrowings</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Borrowing.html" title="class in com.library.library_management.data.entities">Borrowing</a>&gt;&nbsp;borrowings)</span></div>
-<div class="block">Sets the list of borrowings associated with the person.</div>
+<div class="block">Sets the list of borrowings associated with the user.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>borrowings</code> - the new list of <a href="Borrowing.html" title="class in com.library.library_management.data.entities"><code>Borrowing</code></a> instances linked to this person</dd>
+<dd><code>borrowings</code> - the new list of <a href="Borrowing.html" title="class in com.library.library_management.data.entities"><code>Borrowing</code></a> instances linked to this user</dd>
 </dl>
 </div>
 </section>
@@ -434,10 +434,10 @@ loadScripts(document, 'script');</script>
 <h3>getLibrarian</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Librarian.html" title="class in com.library.library_management.data.entities">Librarian</a></span>&nbsp;<span class="element-name">getLibrarian</span>()</div>
-<div class="block">Gets the librarian entity associated with the person, if applicable.</div>
+<div class="block">Gets the librarian entity associated with the user, if applicable.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the <a href="Librarian.html" title="class in com.library.library_management.data.entities"><code>Librarian</code></a> entity linked to this person, or <code>null</code> if the person is not a librarian</dd>
+<dd>the <a href="Librarian.html" title="class in com.library.library_management.data.entities"><code>Librarian</code></a> entity linked to this user, or <code>null</code> if the user is not a librarian</dd>
 </dl>
 </div>
 </section>
@@ -447,10 +447,10 @@ loadScripts(document, 'script');</script>
 <h3>setLibrarian</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setLibrarian</span><wbr><span class="parameters">(<a href="Librarian.html" title="class in com.library.library_management.data.entities">Librarian</a>&nbsp;librarian)</span></div>
-<div class="block">Sets the librarian entity associated with the person.</div>
+<div class="block">Sets the librarian entity associated with the user.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>librarian</code> - the new <a href="Librarian.html" title="class in com.library.library_management.data.entities"><code>Librarian</code></a> entity to be linked to this person</dd>
+<dd><code>librarian</code> - the new <a href="Librarian.html" title="class in com.library.library_management.data.entities"><code>Librarian</code></a> entity to be linked to this user</dd>
 </dl>
 </div>
 </section>

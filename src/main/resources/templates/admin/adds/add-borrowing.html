@@ -12,11 +12,11 @@
 <form th:action="@{/borrowings/add}" th:object="${borrowing}" method="post">
     <!-- Поле Borrower -->
     <div>
-        <label for="person">Borrower:</label>
-        <select th:field="*{person.id}" id="person" required>
-            <option th:each="person : ${persons}"
-                    th:value="${person.id}"
-                    th:text="${person.name}">
+        <label for="user">Borrower:</label>
+        <select th:field="*{user.id}" id="user" required>
+            <option th:each="user : ${users}"
+                    th:value="${user.id}"
+                    th:text="${user.name}">
             </option>
         </select>
     </div>

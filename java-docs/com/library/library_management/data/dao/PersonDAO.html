@@ -163,12 +163,12 @@ implements <a href="DAO.html" title="interface in com.library.library_management
 <div class="block">Counts the total number of <a href="../entities/Person.html" title="class in com.library.library_management.data.entities"><code>Person</code></a> entities in the database.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#insert(com.library.library_management.data.entities.Person)" class="member-name-link">insert</a><wbr>(<a href="../entities/Person.html" title="class in com.library.library_management.data.entities">Person</a>&nbsp;person)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#insert(com.library.library_management.data.entities.Person)" class="member-name-link">insert</a><wbr>(<a href="../entities/Person.html" title="class in com.library.library_management.data.entities">Person</a>&nbsp;user)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Inserts a new <a href="../entities/Person.html" title="class in com.library.library_management.data.entities"><code>Person</code></a> entity into the database.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update(com.library.library_management.data.entities.Person)" class="member-name-link">update</a><wbr>(<a href="../entities/Person.html" title="class in com.library.library_management.data.entities">Person</a>&nbsp;person)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update(com.library.library_management.data.entities.Person)" class="member-name-link">update</a><wbr>(<a href="../entities/Person.html" title="class in com.library.library_management.data.entities">Person</a>&nbsp;user)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Updates an existing <a href="../entities/Person.html" title="class in com.library.library_management.data.entities"><code>Person</code></a> entity in the database.</div>
 </div>
@@ -209,7 +209,7 @@ implements <a href="DAO.html" title="interface in com.library.library_management
 <section class="detail" id="insert(com.library.library_management.data.entities.Person)">
 <h3>insert</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">insert</span><wbr><span class="parameters">(<a href="../entities/Person.html" title="class in com.library.library_management.data.entities">Person</a>&nbsp;person)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">insert</span><wbr><span class="parameters">(<a href="../entities/Person.html" title="class in com.library.library_management.data.entities">Person</a>&nbsp;user)</span></div>
 <div class="block">Inserts a new <a href="../entities/Person.html" title="class in com.library.library_management.data.entities"><code>Person</code></a> entity into the database.
 
  <p>The provided <a href="../entities/Person.html" title="class in com.library.library_management.data.entities"><code>Person</code></a> instance is persisted into the database as a new record.
@@ -218,7 +218,7 @@ implements <a href="DAO.html" title="interface in com.library.library_management
 <dt>Specified by:</dt>
 <dd><code><a href="DAO.html#insert(Entity)">insert</a></code>&nbsp;in interface&nbsp;<code><a href="DAO.html" title="interface in com.library.library_management.data.dao">DAO</a>&lt;<a href="../entities/Person.html" title="class in com.library.library_management.data.entities">Person</a>&gt;</code></dd>
 <dt>Parameters:</dt>
-<dd><code>person</code> - the <a href="../entities/Person.html" title="class in com.library.library_management.data.entities"><code>Person</code></a> entity to be inserted</dd>
+<dd><code>user</code> - the <a href="../entities/Person.html" title="class in com.library.library_management.data.entities"><code>Person</code></a> entity to be inserted</dd>
 </dl>
 </div>
 </section>
@@ -245,7 +245,7 @@ implements <a href="DAO.html" title="interface in com.library.library_management
 <section class="detail" id="update(com.library.library_management.data.entities.Person)">
 <h3>update</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">update</span><wbr><span class="parameters">(<a href="../entities/Person.html" title="class in com.library.library_management.data.entities">Person</a>&nbsp;person)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">update</span><wbr><span class="parameters">(<a href="../entities/Person.html" title="class in com.library.library_management.data.entities">Person</a>&nbsp;user)</span></div>
 <div class="block">Updates an existing <a href="../entities/Person.html" title="class in com.library.library_management.data.entities"><code>Person</code></a> entity in the database.
 
  <p>This method updates the database record corresponding to the provided in-memory
@@ -254,7 +254,7 @@ implements <a href="DAO.html" title="interface in com.library.library_management
 <dt>Specified by:</dt>
 <dd><code><a href="DAO.html#update(Entity)">update</a></code>&nbsp;in interface&nbsp;<code><a href="DAO.html" title="interface in com.library.library_management.data.dao">DAO</a>&lt;<a href="../entities/Person.html" title="class in com.library.library_management.data.entities">Person</a>&gt;</code></dd>
 <dt>Parameters:</dt>
-<dd><code>person</code> - the <a href="../entities/Person.html" title="class in com.library.library_management.data.entities"><code>Person</code></a> entity with updated values</dd>
+<dd><code>user</code> - the <a href="../entities/Person.html" title="class in com.library.library_management.data.entities"><code>Person</code></a> entity with updated values</dd>
 </dl>
 </div>
 </section>

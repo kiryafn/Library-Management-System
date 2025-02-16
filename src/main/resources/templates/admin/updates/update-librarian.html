@@ -14,12 +14,12 @@
 
     <!-- Поле выбора связанного пользователя с использованием datalist -->
     <div>
-        <label for="person">Person:</label>
-        <input list="usersList" id="person" th:field="*{person.id}" />
+        <label for="user">Person:</label>
+        <input list="usersList" id="user" th:field="*{user.id}" />
         <datalist id="usersList">
-            <option th:each="person : ${users}"
-                    th:value="${person.id}"
-                    th:text="${person.name + ' (' + person.email + ')'}">
+            <option th:each="user : ${users}"
+                    th:value="${user.id}"
+                    th:text="${user.name + ' (' + user.email + ')'}">
             </option>
         </datalist>
     </div>

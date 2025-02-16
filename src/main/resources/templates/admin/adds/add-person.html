@@ -9,7 +9,7 @@
 <body>
 <h1>Add Person</h1>
 
-<form th:action="@{/persons/add}" th:object="${person}" method="post" class="form-container">
+<form th:action="@{/users/add}" th:object="${user}" method="post" class="form-container">
     <!-- ID поля скрыто -->
     <input type="hidden" th:field="*{id}"/>
 
@@ -40,7 +40,7 @@
     <!-- Действия -->
     <div class="form-actions">
         <button type="submit" class="submit-btn">Save</button>
-        <button type="button" class="cancel-btn" th:onclick="|location.href='/persons'|">Cancel</button>
+        <button type="button" class="cancel-btn" th:onclick="|location.href='/users'|">Cancel</button>
     </div>
 </form>
 

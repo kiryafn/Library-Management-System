@@ -6,7 +6,7 @@ import com.library.library_management.data.dao.CopyDAO;
 import com.library.library_management.data.dao.BookDAO;
 import com.library.library_management.data.dao.PublisherDAO;
 import com.library.library_management.data.entities.Borrowing;
-import com.library.library_management.data.entities.Person;
+import com.library.library_management.data.entities.User;
 import com.library.library_management.data.entities.Copy;
 import com.library.library_management.data.entities.Book;
 import com.library.library_management.data.entities.Publisher;
@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ActiveProfiles("test")
-public class PersonBorrowingIntegrationTests {
+public class UserBorrowingIntegrationTests {
 
     @Autowired
     private PersonDAO personDAO;
@@ -42,7 +42,7 @@ public class PersonBorrowingIntegrationTests {
     @Autowired
     private PublisherDAO publisherDAO;
 
-    private Person person;
+    private User user;
     private Copy copy;
     private Book book;
     private Borrowing borrowing;
@@ -63,11 +63,11 @@ public class PersonBorrowingIntegrationTests {
         copyDAO.insert(copy);
 
         // Создаем пользователя
-        person = new Person("Test User", "test.user@example.com", "123456789", "123 User Address");
-        personDAO.insert(person);
+        user = new User("Test User", "test.user@example.com", "123456789", "123 User Address");
+        personDAO.insert(user);
 
         // Создаем заимствование
-        borrowing = new Borrowing(person, copy, LocalDate.now(), null);
+        borrowing = new Borrowing(user, copy, LocalDate.now(), null);
     }
 
     @AfterEach
@@ -88,7 +88,7 @@ public class PersonBorrowingIntegrationTests {
         // Проверяем, что заимствование связано с пользователем
         Borrowing fetchedBorrowing = borrowingDAO.getById(borrowing.getId());
         assertNotNull(fetchedBorrowing);
-        assertEquals(person.getId(), fetchedBorrowing.getPerson().getId());
+        assertEquals(user.getId(), fetchedBorrowing.getPerson().getId());
         assertEquals(copy.getId(), fetchedBorrowing.getCopy().getId());
     }
 
@@ -98,10 +98,10 @@ public class PersonBorrowingIntegrationTests {
         borrowingDAO.insert(borrowing);
 
         // Проверяем список заимствований для пользователя
-        List<Borrowing> borrowings = borrowingDAO.getByUserId(person.getId().toString());
+        List<Borrowing> borrowings = borrowingDAO.getByUserId(user.getId().toString());
         assertNotNull(borrowings);
         assertEquals(1, borrowings.size());
-        assertEquals(person.getId(), borrowings.get(0).getPerson().getId());
+        assertEquals(user.getId(), borrowings.get(0).getPerson().getId());
     }
 
     @Test
@@ -121,12 +121,12 @@ public class PersonBorrowingIntegrationTests {
     @Test
     public void testGetPersonsWithMultipleBorrowings() {
         // Создаем второе заимствование
-        Borrowing secondBorrowing = new Borrowing(person, copy, LocalDate.now().minusDays(1), LocalDate.now());
+        Borrowing secondBorrowing = new Borrowing(user, copy, LocalDate.now().minusDays(1), LocalDate.now());
         borrowingDAO.insert(borrowing);
         borrowingDAO.insert(secondBorrowing);
 
         // Проверяем заимствования
-        List<Borrowing> borrowings = borrowingDAO.getByUserId(person.getId().toString());
+        List<Borrowing> borrowings = borrowingDAO.getByUserId(user.getId().toString());
         assertNotNull(borrowings);
         assertEquals(2, borrowings.size());
     }

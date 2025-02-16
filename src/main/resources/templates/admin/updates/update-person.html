@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>Update User</h1>
-<form th:action="@{/persons/update}" th:object="${person}" method="post">
+<form th:action="@{/users/update}" th:object="${user}" method="post">
     <!-- Скрытое поле для ID -->
     <input type="hidden" th:field="*{id}" />
 

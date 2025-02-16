@@ -92,17 +92,17 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <hr>
 <div class="type-signature"><span class="annotations">@Controller
-@RequestMapping("/persons")
+@RequestMapping("/users")
 </span><span class="modifiers">public class </span><span class="element-name type-name-label">PersonController</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Controller class for managing persons (e.g., library members or staff) in the library management system.
+<div class="block">Controller class for managing users (e.g., library members or staff) in the library management system.
 
  <p>The <code>PersonController</code> provides endpoints to handle CRUD (Create, Read, Update, Delete)
- operations associated with persons. It interacts with the <a href="../../../dao/PersonDAO.html" title="class in com.library.library_management.data.dao"><code>PersonDAO</code></a> to perform database
+ operations associated with users. It interacts with the <a href="../../../dao/PersonDAO.html" title="class in com.library.library_management.data.dao"><code>PersonDAO</code></a> to perform database
  operations and communicates with view templates to display data for the administrative interface.</p>
 
  <p>Marked with the <code>Controller</code> annotation, this class functions as part of the Spring MVC framework,
- processing requests with the base path <code>/persons</code>.</p></div>
+ processing requests with the base path <code>/users</code>.</p></div>
 </div>
 </section>
 <section class="summary">
@@ -134,35 +134,35 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addPerson(com.library.library_management.data.entities.Person)" class="member-name-link">addPerson</a><wbr>(<a href="../../../entities/Person.html" title="class in com.library.library_management.data.entities">Person</a>&nbsp;person)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addPerson(com.library.library_management.data.entities.Person)" class="member-name-link">addPerson</a><wbr>(<a href="../../../entities/Person.html" title="class in com.library.library_management.data.entities">Person</a>&nbsp;user)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Handles HTTP POST requests to add a new person.</div>
+<div class="block">Handles HTTP POST requests to add a new user.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#deleteBook(int)" class="member-name-link">deleteBook</a><wbr>(int&nbsp;id)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Handles HTTP POST requests to delete a person by their ID.</div>
+<div class="block">Handles HTTP POST requests to delete a user by their ID.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#showAddForm(org.springframework.ui.Model)" class="member-name-link">showAddForm</a><wbr>(org.springframework.ui.Model&nbsp;model)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Handles HTTP GET requests to display the form for adding a new person.</div>
+<div class="block">Handles HTTP GET requests to display the form for adding a new user.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#showPersons(org.springframework.ui.Model)" class="member-name-link">showPersons</a><wbr>(org.springframework.ui.Model&nbsp;model)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Handles HTTP GET requests to display the list of persons.</div>
+<div class="block">Handles HTTP GET requests to display the list of users.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#showUpdateForm(int,org.springframework.ui.Model)" class="member-name-link">showUpdateForm</a><wbr>(int&nbsp;id,
  org.springframework.ui.Model&nbsp;model)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Handles HTTP GET requests to display the form for updating a person's details.</div>
+<div class="block">Handles HTTP GET requests to display the form for updating a user's details.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateBook(com.library.library_management.data.entities.Person)" class="member-name-link">updateBook</a><wbr>(<a href="../../../entities/Person.html" title="class in com.library.library_management.data.entities">Person</a>&nbsp;person)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateBook(com.library.library_management.data.entities.Person)" class="member-name-link">updateBook</a><wbr>(<a href="../../../entities/Person.html" title="class in com.library.library_management.data.entities">Person</a>&nbsp;user)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Handles HTTP POST requests to update a person's details.</div>
+<div class="block">Handles HTTP POST requests to update a user's details.</div>
 </div>
 </div>
 </div>
@@ -189,7 +189,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Constructs a new <code>PersonController</code> with the specified <a href="../../../dao/PersonDAO.html" title="class in com.library.library_management.data.dao"><code>PersonDAO</code></a>.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>personDAO</code> - the DAO used for person-related operations</dd>
+<dd><code>personDAO</code> - the DAO used for user-related operations</dd>
 </dl>
 </div>
 </section>
@@ -208,16 +208,16 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations">@GetMapping
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">showPersons</span><wbr><span class="parameters">(org.springframework.ui.Model&nbsp;model)</span></div>
-<div class="block">Handles HTTP GET requests to display the list of persons.
+<div class="block">Handles HTTP GET requests to display the list of users.
 
- <p>Fetches a list of all registered persons from the data layer using <a href="../../../dao/PersonDAO.html#getAll()"><code>PersonDAO.getAll()</code></a>,
+ <p>Fetches a list of all registered users from the data layer using <a href="../../../dao/PersonDAO.html#getAll()"><code>PersonDAO.getAll()</code></a>,
  and populates the provided <code>Model</code> with the retrieved <a href="../../../entities/Person.html" title="class in com.library.library_management.data.entities"><code>Person</code></a> objects.
- The returned view template renders the person list in the administrative interface.</p></div>
+ The returned view template renders the user list in the administrative interface.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>model</code> - the <code>Model</code> object used to pass data to the view template</dd>
 <dt>Returns:</dt>
-<dd>the name of the view template for displaying the persons list</dd>
+<dd>the name of the view template for displaying the users list</dd>
 </dl>
 </div>
 </section>
@@ -229,16 +229,16 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="annotations">@PostMapping("/delete/{id}")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">deleteBook</span><wbr><span class="parameters">(@PathVariable("id")
  int&nbsp;id)</span></div>
-<div class="block">Handles HTTP POST requests to delete a person by their ID.
+<div class="block">Handles HTTP POST requests to delete a user by their ID.
 
- <p>Removes the person identified by the given <code>id</code> from the database
- using <a href="../../../dao/PersonDAO.html#delete(int)"><code>PersonDAO.delete(int)</code></a>, and redirects to the <code>/persons</code> endpoint
+ <p>Removes the user identified by the given <code>id</code> from the database
+ using <a href="../../../dao/PersonDAO.html#delete(int)"><code>PersonDAO.delete(int)</code></a>, and redirects to the <code>/users</code> endpoint
  after deletion.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>id</code> - the ID of the person to delete</dd>
+<dd><code>id</code> - the ID of the user to delete</dd>
 <dt>Returns:</dt>
-<dd>a redirect to the persons list view</dd>
+<dd>a redirect to the users list view</dd>
 </dl>
 </div>
 </section>
@@ -251,17 +251,17 @@ loadScripts(document, 'script');</script>
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">showUpdateForm</span><wbr><span class="parameters">(@PathVariable("id")
  int&nbsp;id,
  org.springframework.ui.Model&nbsp;model)</span></div>
-<div class="block">Handles HTTP GET requests to display the form for updating a person's details.
+<div class="block">Handles HTTP GET requests to display the form for updating a user's details.
 
- <p>Fetches the person identified by the given <code>id</code> using <a href="../../../dao/PersonDAO.html#getById(int)"><code>PersonDAO.getById(int)</code></a>
+ <p>Fetches the user identified by the given <code>id</code> using <a href="../../../dao/PersonDAO.html#getById(int)"><code>PersonDAO.getById(int)</code></a>
  and populates the model with the retrieved <a href="../../../entities/Person.html" title="class in com.library.library_management.data.entities"><code>Person</code></a> object.
- The returned view template renders the form for updating the person's information.</p></div>
+ The returned view template renders the form for updating the user's information.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>id</code> - the ID of the person to update</dd>
+<dd><code>id</code> - the ID of the user to update</dd>
 <dd><code>model</code> - the <code>Model</code> object used to pass data to the view template</dd>
 <dt>Returns:</dt>
-<dd>the name of the view template for updating a person</dd>
+<dd>the name of the view template for updating a user</dd>
 </dl>
 </div>
 </section>
@@ -272,16 +272,16 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations">@PostMapping("/update")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">updateBook</span><wbr><span class="parameters">(@ModelAttribute
- <a href="../../../entities/Person.html" title="class in com.library.library_management.data.entities">Person</a>&nbsp;person)</span></div>
-<div class="block">Handles HTTP POST requests to update a person's details.
+ <a href="../../../entities/Person.html" title="class in com.library.library_management.data.entities">Person</a>&nbsp;user)</span></div>
+<div class="block">Handles HTTP POST requests to update a user's details.
 
  <p>Updates the specified <a href="../../../entities/Person.html" title="class in com.library.library_management.data.entities"><code>Person</code></a> object in the database using <a href="../../../dao/PersonDAO.html#update(com.library.library_management.data.entities.Person)"><code>PersonDAO.update(Person)</code></a>.
- After updating the person, redirects to the <code>/persons</code> endpoint to display the updated list of persons.</p></div>
+ After updating the user, redirects to the <code>/users</code> endpoint to display the updated list of users.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>person</code> - the updated <a href="../../../entities/Person.html" title="class in com.library.library_management.data.entities"><code>Person</code></a> object to save</dd>
+<dd><code>user</code> - the updated <a href="../../../entities/Person.html" title="class in com.library.library_management.data.entities"><code>Person</code></a> object to save</dd>
 <dt>Returns:</dt>
-<dd>a redirect to the persons list view</dd>
+<dd>a redirect to the users list view</dd>
 </dl>
 </div>
 </section>
@@ -292,15 +292,15 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations">@GetMapping("/add")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">showAddForm</span><wbr><span class="parameters">(org.springframework.ui.Model&nbsp;model)</span></div>
-<div class="block">Handles HTTP GET requests to display the form for adding a new person.
+<div class="block">Handles HTTP GET requests to display the form for adding a new user.
 
  <p>Initializes a new <a href="../../../entities/Person.html" title="class in com.library.library_management.data.entities"><code>Person</code></a> object and populates the model with it to render the form
- for adding a person in the admin interface.</p></div>
+ for adding a user in the admin interface.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>model</code> - the <code>Model</code> object used to pass data to the view template</dd>
 <dt>Returns:</dt>
-<dd>the name of the view template for creating a new person</dd>
+<dd>the name of the view template for creating a new user</dd>
 </dl>
 </div>
 </section>
@@ -310,16 +310,16 @@ loadScripts(document, 'script');</script>
 <h3>addPerson</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations">@PostMapping("/add")
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">addPerson</span><wbr><span class="parameters">(<a href="../../../entities/Person.html" title="class in com.library.library_management.data.entities">Person</a>&nbsp;person)</span></div>
-<div class="block">Handles HTTP POST requests to add a new person.
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">addPerson</span><wbr><span class="parameters">(<a href="../../../entities/Person.html" title="class in com.library.library_management.data.entities">Person</a>&nbsp;user)</span></div>
+<div class="block">Handles HTTP POST requests to add a new user.
 
  <p>Adds the specified <a href="../../../entities/Person.html" title="class in com.library.library_management.data.entities"><code>Person</code></a> object to the database using <a href="../../../dao/PersonDAO.html#insert(com.library.library_management.data.entities.Person)"><code>PersonDAO.insert(Person)</code></a>,
- and redirects to the <code>/persons</code> endpoint to show the updated list of persons.</p></div>
+ and redirects to the <code>/users</code> endpoint to show the updated list of users.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>person</code> - the new <a href="../../../entities/Person.html" title="class in com.library.library_management.data.entities"><code>Person</code></a> object to add</dd>
+<dd><code>user</code> - the new <a href="../../../entities/Person.html" title="class in com.library.library_management.data.entities"><code>Person</code></a> object to add</dd>
 <dt>Returns:</dt>
-<dd>a redirect to the persons list view</dd>
+<dd>a redirect to the users list view</dd>
 </dl>
 </div>
 </section>

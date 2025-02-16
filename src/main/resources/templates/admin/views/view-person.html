@@ -23,7 +23,7 @@
             </tr>
             </thead>
             <tbody>
-                <tr th:each="el : ${persons}">
+                <tr th:each="el : ${users}">
                     <td th:text="${el.getId()}"></td>
                     <td th:text="${el.getName()}"></td>
                     <td th:text="${el.getAddress()}"></td>
@@ -32,12 +32,12 @@
 
                     <td class="actions-cell">
                         <!-- Кнопка для редактирования -->
-                        <button class="edit-btn" th:onclick="'location.href=\'/persons/update/' + ${el.getId()} + '\''">
+                        <button class="edit-btn" th:onclick="'location.href=\'/users/update/' + ${el.getId()} + '\''">
                             Update
                         </button>
 
                         <!-- Кнопка для удаления -->
-                        <form th:action="@{/persons/delete/{id}(id=${el.getId()})}" method="post">
+                        <form th:action="@{/users/delete/{id}(id=${el.getId()})}" method="post">
                             <button type="submit" class="delete-btn">
                                 Delete
                             </button>
@@ -49,7 +49,7 @@
     </div>
 
 <div class="add-button-container">
-    <form th:action="@{/persons/add}" method="get">
+    <form th:action="@{/users/add}" method="get">
         <button type="submit" class="add-btn">
             Add
         </button>

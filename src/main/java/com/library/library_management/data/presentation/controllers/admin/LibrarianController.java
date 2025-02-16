@@ -1,10 +1,9 @@
 package com.library.library_management.data.presentation.controllers.admin;
 
-import com.library.library_management.data.dao.BookDAO;
 import com.library.library_management.data.dao.LibrarianDAO;
 import com.library.library_management.data.dao.PersonDAO;
 import com.library.library_management.data.entities.Librarian;
-import com.library.library_management.data.entities.Person;
+import com.library.library_management.data.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,7 +44,7 @@ public class LibrarianController {
     @GetMapping("/update/{id}")
     public String showUpdateForm(@PathVariable("id") int id, Model model) {
         Librarian librarian = librarianDAO.getById(id);
-        List<Person> users = personDAO.getAll();
+        List<User> users = personDAO.getAll();
         model.addAttribute("librarian", librarian);
         model.addAttribute("users", users);
         return "admin/updates/update-librarian";
@@ -66,7 +65,7 @@ public class LibrarianController {
     @GetMapping("/add")
     public String showAddForm(Model model) {
         model.addAttribute("librarian", new Librarian());
-        List<Person> users = personDAO.getAll();
+        List<User> users = personDAO.getAll();
         model.addAttribute("users", users);
         return "admin/adds/add-librarian";
     }

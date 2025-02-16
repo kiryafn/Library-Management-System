@@ -1,7 +1,7 @@
 package com.library.library_management.data.presentation.controllers.admin;
 
 import com.library.library_management.data.dao.PersonDAO;
-import com.library.library_management.data.entities.Person;
+import com.library.library_management.data.entities.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -40,7 +40,7 @@ public class PersonController {
      * Handles HTTP GET requests to display the list of persons.
      *
      * <p>Fetches a list of all registered persons from the data layer using {@link PersonDAO#getAll()},
-     * and populates the provided {@link Model} with the retrieved {@link Person} objects.
+     * and populates the provided {@link Model} with the retrieved {@link User} objects.
      * The returned view template renders the person list in the administrative interface.</p>
      *
      * @param model the {@link Model} object used to pass data to the view template
@@ -48,8 +48,8 @@ public class PersonController {
      */
     @GetMapping
     public String showPersons(Model model) {
-        List<Person> persons = personDAO.getAll();
-        model.addAttribute("persons", persons);
+        List<User> users = personDAO.getAll();
+        model.addAttribute("persons", users);
         return "admin/views/view-person";
     }
 
@@ -73,7 +73,7 @@ public class PersonController {
      * Handles HTTP GET requests to display the form for updating a person's details.
      *
      * <p>Fetches the person identified by the given {@code id} using {@link PersonDAO#getById(int)}
-     * and populates the model with the retrieved {@link Person} object.
+     * and populates the model with the retrieved {@link User} object.
      * The returned view template renders the form for updating the person's information.</p>
      *
      * @param id the ID of the person to update
@@ -82,30 +82,30 @@ public class PersonController {
      */
     @GetMapping("/update/{id}")
     public String showUpdateForm(@PathVariable("id") int id, Model model) {
-        Person person = personDAO.getById(id);
-        model.addAttribute("person", person);
+        User user = personDAO.getById(id);
+        model.addAttribute("person", user);
         return "admin/updates/update-person";
     }
 
     /**
-     * Handles HTTP POST requests to update a person's details.
+     * Handles HTTP POST requests to update a user's details.
      *
-     * <p>Updates the specified {@link Person} object in the database using {@link PersonDAO#update(Person)}.
-     * After updating the person, redirects to the {@code /persons} endpoint to display the updated list of persons.</p>
+     * <p>Updates the specified {@link User} object in the database using {@link PersonDAO#update(User)}.
+     * After updating the user, redirects to the {@code /persons} endpoint to display the updated list of persons.</p>
      *
-     * @param person the updated {@link Person} object to save
+     * @param user the updated {@link User} object to save
      * @return a redirect to the persons list view
      */
     @PostMapping("/update")
-    public String updateBook(@ModelAttribute Person person) {
-        personDAO.update(person);
+    public String updateBook(@ModelAttribute User user) {
+        personDAO.update(user);
         return "redirect:/persons";
     }
 
     /**
      * Handles HTTP GET requests to display the form for adding a new person.
      *
-     * <p>Initializes a new {@link Person} object and populates the model with it to render the form
+     * <p>Initializes a new {@link User} object and populates the model with it to render the form
      * for adding a person in the admin interface.</p>
      *
      * @param model the {@link Model} object used to pass data to the view template
@@ -113,22 +113,22 @@ public class PersonController {
      */
     @GetMapping("/add")
     public String showAddForm(Model model) {
-        model.addAttribute("person", new Person());
+        model.addAttribute("person", new User());
         return "admin/adds/add-person";
     }
 
     /**
-     * Handles HTTP POST requests to add a new person.
+     * Handles HTTP POST requests to add a new user.
      *
-     * <p>Adds the specified {@link Person} object to the database using {@link PersonDAO#insert(Person)},
+     * <p>Adds the specified {@link User} object to the database using {@link PersonDAO#insert(User)},
      * and redirects to the {@code /persons} endpoint to show the updated list of persons.</p>
      *
-     * @param person the new {@link Person} object to add
+     * @param user the new {@link User} object to add
      * @return a redirect to the persons list view
      */
     @PostMapping("/add")
-    public String addPerson(Person person) {
-        personDAO.insert(person);
+    public String addPerson(User user) {
+        personDAO.insert(user);
         return "redirect:/persons";
     }
 }

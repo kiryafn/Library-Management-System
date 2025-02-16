@@ -27,7 +27,7 @@ public class Book {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     /**
      * The title of the book.
@@ -108,7 +108,7 @@ public class Book {
      *
      * @return the ID of the book
      */
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
@@ -117,7 +117,7 @@ public class Book {
      *
      * @param id the new ID of the book
      */
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

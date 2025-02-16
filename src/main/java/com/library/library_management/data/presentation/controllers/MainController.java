@@ -1,7 +1,7 @@
 package com.library.library_management.data.presentation.controllers;
 
 import com.library.library_management.data.dao.PersonDAO;
-import com.library.library_management.data.entities.Person;
+import com.library.library_management.data.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +28,7 @@ public class MainController {
     /**
      * Constructs an instance of {@code MainController} and injects the required {@link PersonDAO}.
      *
-     * @param personService the DAO object used for performing operations related to {@link Person} entities
+     * @param personService the DAO object used for performing operations related to {@link User} entities
      */
     @Autowired
     public MainController(PersonDAO personService) {
@@ -62,9 +62,9 @@ public class MainController {
      */
     @PostMapping("/user")
     public String enterAsUser(@RequestParam("email") String email, Model model) {
-        Person person = personService.getByEmail(email); // Search the user by email
-        if (person != null) {
-            return "redirect:/user/" + person.getId(); // Redirect to the user-specific route
+        User user = personService.getByEmail(email); // Search the user by email
+        if (user != null) {
+            return "redirect:/user/" + user.getId(); // Redirect to the user-specific route
         } else {
             model.addAttribute("error", "Пользователь с таким email не найден"); // Add error to the model
             return "index"; // Return to the main page with an error

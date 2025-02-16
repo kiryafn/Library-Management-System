@@ -24,7 +24,7 @@ public class Copy {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     /**
      * The {@link Book} that this copy belongs to.
@@ -77,7 +77,7 @@ public class Copy {
      *
      * @return the unique ID of the copy
      */
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
@@ -86,7 +86,7 @@ public class Copy {
      *
      * @param id the new ID of the copy
      */
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

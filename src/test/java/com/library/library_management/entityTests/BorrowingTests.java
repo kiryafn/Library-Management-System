@@ -22,7 +22,7 @@ public class BorrowingTests {
     private BorrowingDAO borrowingDAO; // DAO for Borrowing operations
 
     @Autowired
-    private PersonDAO personDAO; // DAO for Person operations
+    private PersonDAO personDAO; // DAO for User operations
 
     @Autowired
     private CopyDAO copyDAO; // DAO for Copy operations
@@ -33,7 +33,7 @@ public class BorrowingTests {
     @Autowired
     private PublisherDAO publisherDAO; // DAO for Publisher operations
 
-    private Person person; // Test Person object
+    private User user; // Test User object
     private Copy copy; // Test Copy object
     private Book book; // Test Book object
     private Borrowing borrowing; // Test Borrowing object
@@ -41,20 +41,20 @@ public class BorrowingTests {
 
     @BeforeEach
     public void setUp() {
-        // Prepare data: Publisher, Book, Person, Copy, and Borrowing
+        // Prepare data: Publisher, Book, User, Copy, and Borrowing
         publisher = new Publisher("Test Publisher", "123 Test St", "12345");
         publisherDAO.insert(publisher);
 
         book = new Book("Test Book", "Test Author", publisher, 2023, "123456789");
         bookDAO.insert(book);
 
-        person = new Person("John Doe", "john.doe@example.com", "123456789", "123 Test St");
-        personDAO.insert(person);
+        user = new User("John Doe", "john.doe@example.com", "123456789", "123 Test St");
+        personDAO.insert(user);
 
         copy = new Copy(book, 1, "Available");
         copyDAO.insert(copy);
 
-        borrowing = new Borrowing(person, copy, LocalDate.now(), null);
+        borrowing = new Borrowing(user, copy, LocalDate.now(), null);
     }
 
     @AfterEach

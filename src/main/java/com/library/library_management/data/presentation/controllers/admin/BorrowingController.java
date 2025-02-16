@@ -5,7 +5,7 @@ import com.library.library_management.data.dao.PersonDAO;
 import com.library.library_management.data.dao.CopyDAO;
 import com.library.library_management.data.entities.Borrowing;
 import com.library.library_management.data.entities.CopyStatus;
-import com.library.library_management.data.entities.Person;
+import com.library.library_management.data.entities.User;
 import com.library.library_management.data.entities.Copy;
 import com.library.library_management.domain.services.BorrowingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import java.util.List;
  * Controller class for managing borrowings in the library management system.
  *
  * <p>The {@code BorrowingController} provides functionality for displaying, adding, updating,
- * and deleting borrowing records. Each borrowing links a {@link Person} and a {@link Copy}
+ * and deleting borrowing records. Each borrowing links a {@link User} and a {@link Copy}
  * along with the dates for borrowing and returning of the book. This class interacts with
  * the data layer through the {@link BorrowingDAO}, {@link PersonDAO}, and {@link CopyDAO}.
  *

@@ -1,6 +1,7 @@
 package com.library.library_management.data.dao;
 
 import com.library.library_management.data.entities.Borrowing;
+import com.library.library_management.data.entities.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
@@ -105,7 +106,7 @@ public class BorrowingDAO implements DAO<Borrowing> {
     /**
      * Retrieves a list of {@link Borrowing} entities associated with a specific user ID.
      *
-     * <p>The user ID is associated with the {@link com.library.library_management.data.entities.Person}
+     * <p>The user ID is associated with the {@link User}
      * entity that initiated the borrowing.
      *
      * <p>Handles invalid user IDs gracefully by returning an empty list if

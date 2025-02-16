@@ -6,11 +6,11 @@ import java.time.LocalDate;
 /**
  * Entity class representing a borrowing record in the library management system.
  *
- * <p>The {@code Borrowing} entity logs the borrowing of a specific {@link Copy} by a {@link Person},
+ * <p>The {@code Borrowing} entity logs the borrowing of a specific {@link Copy} by a {@link User},
  * along with the borrowing and optional return dates. It is mapped to the {@code BORROWING} table
  * in the database using JPA annotations.</p>
  *
- * <p>This class defines relationships with the {@link Person} and {@link Copy} entities,
+ * <p>This class defines relationships with the {@link User} and {@link Copy} entities,
  * ensuring that each borrowing event is associated with a borrower and a specific copy of a book.</p>
  */
 @Entity
@@ -25,17 +25,17 @@ public class Borrowing {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     /**
-     * The {@link Person} who borrowed the {@link Copy}.
+     * The {@link User} who borrowed the {@link Copy}.
      *
-     * <p>This field establishes a many-to-one relationship with the {@link Person} entity.
+     * <p>This field establishes a many-to-one relationship with the {@link User} entity.
      * It is mandatory and mapped using a foreign key {@code person_id} in the database table.</p>
      */
     @ManyToOne
-    @JoinColumn(name = "person_id", nullable = false)
-    private Person person;
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     /**
      * The {@link Copy} of the book that is being borrowed.
@@ -70,16 +70,16 @@ public class Borrowing {
     public Borrowing() {}
 
     /**
-     * Constructs a new {@link Borrowing} instance with the specified person, copy,
+     * Constructs a new {@link Borrowing} instance with the specified user, copy,
      * borrowing date, and return date.
      *
-     * @param person the {@link Person} who borrowed the copy
+     * @param user the {@link User} who borrowed the copy
      * @param copy the {@link Copy} of the book that was borrowed
      * @param borrowDate the date the borrowing occurred
      * @param returnDate the date the copy was returned (optional, can be {@code null})
      */
-    public Borrowing(Person person, Copy copy, LocalDate borrowDate, LocalDate returnDate) {
-        this.person = person;
+    public Borrowing(User user, Copy copy, LocalDate borrowDate, LocalDate returnDate) {
+        this.user = user;
         this.copy = copy;
         this.borrowDate = borrowDate;
         this.returnDate = returnDate;
@@ -90,7 +90,7 @@ public class Borrowing {
      *
      * @return the ID of the borrowing record
      */
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
@@ -99,26 +99,26 @@ public class Borrowing {
      *
      * @param id the new ID of the borrowing record
      */
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * Gets the person who borrowed the copy.
+     * Gets the user who borrowed the copy.
      *
-     * @return the {@link Person} who borrowed the copy
+     * @return the {@link User} who borrowed the copy
      */
-    public Person getPerson() {
-        return person;
+    public User getUser() {
+        return user;
     }
 
     /**
-     * Sets the person who borrowed the copy.
+     * Sets the user who borrowed the copy.
      *
-     * @param person the {@link Person} who borrowed the copy
+     * @param user the {@link User} who borrowed the copy
      */
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     /**

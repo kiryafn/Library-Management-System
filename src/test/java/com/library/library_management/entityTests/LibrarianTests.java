@@ -3,7 +3,7 @@ package com.library.library_management.entityTests;
 import com.library.library_management.data.dao.LibrarianDAO;
 import com.library.library_management.data.dao.PersonDAO;
 import com.library.library_management.data.entities.Librarian;
-import com.library.library_management.data.entities.Person;
+import com.library.library_management.data.entities.User;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,18 +21,18 @@ public class LibrarianTests {
     private LibrarianDAO librarianDAO; // DAO for Librarian
 
     @Autowired
-    private PersonDAO personDAO; // DAO for Person
+    private PersonDAO personDAO; // DAO for User
 
-    private Person person; // Test Person
+    private User user; // Test User
     private Librarian librarian; // Test Librarian
 
     @BeforeEach
     public void setUp() {
-        // Prepare test data: Person and Librarian
-        person = new Person("John Doe", "john.doe@example.com", "123456789", "123 Test St");
-        personDAO.insert(person);
+        // Prepare test data: User and Librarian
+        user = new User("John Doe", "john.doe@example.com", "123456789", "123 Test St");
+        personDAO.insert(user);
 
-        librarian = new Librarian(person, LocalDate.now(), "Head Librarian");
+        librarian = new Librarian(user, LocalDate.now(), "Head Librarian");
     }
 
     @AfterEach
@@ -49,7 +49,7 @@ public class LibrarianTests {
 
         Librarian fetchedLibrarian = librarianDAO.getById(librarian.getId());
         assertNotNull(fetchedLibrarian);
-        assertEquals(person.getName(), fetchedLibrarian.getPerson().getName());
+        assertEquals(user.getName(), fetchedLibrarian.getPerson().getName());
     }
 
     @Test

@@ -24,7 +24,7 @@ public class Publisher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
-    private Integer id;
+    private Long id;
 
     /**
      * The name of the publisher.
@@ -73,22 +73,6 @@ public class Publisher {
      * @param address the address of the publisher
      * @param phonenumber the phone number of the publisher
      */
-    public Publisher(Integer id, String name, String address, String phonenumber) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.phonenumber = phonenumber;
-    }
-
-    /**
-     * Constructs a new {@link Publisher} with the specified name, address, and phone number.
-     *
-     * <p>This constructor excludes the {@code ID} field, which is auto-generated.</p>
-     *
-     * @param name the name of the publisher
-     * @param address the address of the publisher
-     * @param phonenumber the phone number of the publisher
-     */
     public Publisher(String name, String address, String phonenumber) {
         this.name = name;
         this.address = address;
@@ -100,7 +84,7 @@ public class Publisher {
      *
      * @return the ID of the publisher
      */
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
@@ -109,7 +93,7 @@ public class Publisher {
      *
      * @param id the new ID of the publisher
      */
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

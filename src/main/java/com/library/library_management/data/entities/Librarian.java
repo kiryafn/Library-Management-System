@@ -9,35 +9,28 @@ import java.time.LocalDate;
  * <p>The {@code Librarian} entity captures details about a librarian, including their personal
  * information, employment date, and position within the library. This class is mapped to the
  * {@code LIBRARIAN} table in the database using JPA annotations and maintains a relationship
- * with the {@link Person} class.</p>
+ * with the {@link User} class.</p>
  *
- * <p>Each librarian is uniquely associated with a {@link Person} entity to store personal
+ * <p>Each librarian is uniquely associated with a {@link User} entity to store personal
  * details like name, contact information, and other general data.</p>
  */
 @Entity
-@Table(name = "LIBRARIAN")
 public class Librarian {
 
-    /**
-     * The unique identifier for the librarian.
-     *
-     * <p>This field is the primary key of the {@code LIBRARIAN} table and is
-     * auto-generated using the {@link GenerationType#IDENTITY} strategy.</p>
-     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     /**
-     * The {@link Person} entity associated with this librarian.
+     * The {@link User} entity associated with this librarian.
      *
-     * <p>This field defines a one-to-one relationship with the {@link Person} entity. It is
+     * <p>This field defines a one-to-one relationship with the {@link User} entity. It is
      * mandatory and enforces uniqueness in the database using the {@code person_id} foreign
      * key column.</p>
      */
     @OneToOne
-    @JoinColumn(name = "person_id", nullable = false, unique = true)
-    private Person person;
+    @JoinColumn(name = "user_id", nullable = false, unique = true)
+    private User user;
 
     /**
      * The date the librarian was employed.
@@ -62,14 +55,14 @@ public class Librarian {
     public Librarian() {}
 
     /**
-     * Constructs a new {@link Librarian} with the specified person, employment date, and position.
+     * Constructs a new {@link Librarian} with the specified user, employment date, and position.
      *
-     * @param person the {@link Person} entity associated with the librarian
+     * @param user the {@link User} entity associated with the librarian
      * @param employmentDate the date the librarian was employed
      * @param position the position or role of the librarian in the library
      */
-    public Librarian(Person person, LocalDate employmentDate, String position) {
-        this.person = person;
+    public Librarian(User user, LocalDate employmentDate, String position) {
+        this.user = user;
         this.employmentDate = employmentDate;
         this.position = position;
     }
@@ -79,7 +72,7 @@ public class Librarian {
      *
      * @return the ID of the librarian
      */
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
@@ -88,26 +81,26 @@ public class Librarian {
      *
      * @param id the new ID of the librarian
      */
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * Gets the {@link Person} entity associated with the librarian.
+     * Gets the {@link User} entity associated with the librarian.
      *
-     * @return the {@link Person} entity
+     * @return the {@link User} entity
      */
-    public Person getPerson() {
-        return person;
+    public User getUser() {
+        return user;
     }
 
     /**
-     * Sets the {@link Person} entity for the librarian.
+     * Sets the {@link User} entity for the librarian.
      *
-     * @param person the new {@link Person} entity
+     * @param user the new {@link User} entity
      */
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     /**

@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Entity class representing a person in the library management system.
  *
- * <p>The {@code User} entity stores user-specific details, which may represent
+ * <p>The {@code UserService} entity stores user-specific details, which may represent
  * a library user or a librarian. This class is mapped to the {@code PERSON} table
  * in the database using JPA annotations, and it maintains relationships with
  * {@link Borrowing} and {@link Librarian} entities.</p>

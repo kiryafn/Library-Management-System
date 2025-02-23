@@ -28,13 +28,17 @@ public class PublisherService {
     public void delete(Long id) {
         Publisher toDelete = publisherRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Publishes with id " + id + " not found"));
         if (toDelete.getBooks() != null && !toDelete.getBooks().isEmpty()) {
-            throw new IllegalStateException("Невозможно удалить издателя, у которого есть связанные книги.");
+            throw new IllegalStateException("It is impossible to delete a publisher who has related books.");
         }
-        publisherRepository.delete(id);
+        publisherRepository.deleteById(id);
     }
 
     public List<Publisher> getAll() {
-        return publisherDAO.getAll();
+        return publisherRepository.findAll();
+    }
+
+    public Publisher getById(Long id) {
+        return publisherRepository.getById(id);
     }
 
     public void validatePublisher(Publisher publisher){

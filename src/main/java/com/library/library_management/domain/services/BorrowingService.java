@@ -10,14 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class BorrowingService {
 
-    /**
-     * DAO for managing {@link Borrowing} entities in the database.
-     */
     private final BorrowingRepository borrowingRepository;
-
-    /**
-     * DAO for managing {@link Copy} entities in the database.
-     */
+    
     private final CopyRepository copyRepository;
 
     public BorrowingService(BorrowingRepository borrowingRepository, CopyRepository copyRepository) {

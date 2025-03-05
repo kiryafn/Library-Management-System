@@ -29,7 +29,7 @@ public class Librarian {
      * key column.</p>
      */
     @OneToOne
-    @JoinColumn(name = "PERSON_ID", nullable = false, unique = true)
+    @JoinColumn(name = "user_id", nullable = false, unique = true)
     private User user;
 
     /**

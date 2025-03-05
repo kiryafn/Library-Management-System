@@ -34,7 +34,7 @@ public class Borrowing {
      * It is mandatory and mapped using a foreign key {@code person_id} in the database table.</p>
      */
     @ManyToOne
-    @JoinColumn(name = "PERSON_ID", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     /**

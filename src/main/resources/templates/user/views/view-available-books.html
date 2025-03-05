@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap">
     <link rel="stylesheet" href="/css/show.css">
-    <title>Books</title>
+    <title>Available Books</title>
 </head>
 <body>
-<h1 class="header-title">Books</h1>
+<h1 class="header-title">Available Books</h1>
 <!-- Таблица -->
 <div class="table-container">
     <table class="styled-table">
@@ -19,17 +19,18 @@
             <th>Author</th>
             <th>Year</th>
             <th>Publisher</th>
-            <th>Number of copies</th>
+            <th>Number of Available Copies</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="el, iter : ${books}">
+        <!-- Перебор Map<Book, Integer> -->
+        <tr th:each="entry, iter : ${books}">
             <td th:text="${iter.index + 1}"></td>
-            <td th:text="${el.book.getTitle()}"></td>
-            <td th:text="${el.book.getAuthor()}"></td>
-            <td th:text="${el.book.getPublicationYear()}"></td>
-            <td th:text="${el.book.getPublisher().getName()}"></td>
-            <td th:text="${el.availableCopies}"></td>
+            <td th:text="${entry.key.title}"></td>
+            <td th:text="${entry.key.author}"></td>
+            <td th:text="${entry.key.publicationYear}"></td>
+            <td th:text="${entry.key.publisher.name}"></td>
+            <td th:text="${entry.value}"></td>
         </tr>
         </tbody>
     </table>

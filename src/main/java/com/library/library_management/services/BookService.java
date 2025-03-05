@@ -1,10 +1,14 @@
 package com.library.library_management.services;
 
 import com.library.library_management.entities.Book;
+import com.library.library_management.entities.CopyStatus;
 import com.library.library_management.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 public class BookService {
@@ -61,5 +65,16 @@ public class BookService {
             throw new IllegalArgumentException("Author can`t be empty.");
         }
 
+    }
+
+    public List<Book> getAvailableBooks(){
+        return bookRepository.findBookByCopiesStatus(CopyStatus.Available.getName());
+    }
+
+    public Map<Book, Integer> getAvailableBooksWithNumberOfCopies(){
+        Map<Book, Integer> books = getAvailableBooks()
+                .stream().collect(Collectors.toMap(Function.identity(), book -> book.getNumberOfCopies()));
+
+        return books;
     }
 }

@@ -1,5 +1,4 @@
-/*
-package com.library.library_management.data.presentation.controllers.user;
+package com.library.library_management.controllers.user;
 
 
 import com.library.library_management.entities.Book;
@@ -14,34 +13,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
-
-*/
-/**
- * Controller class for managing user-related operations in the library management system.
- *
- * <p>The {@code UserController} handles user-facing functionalities such as displaying user information,
- * listing all books, showing available books for borrowing, and providing details on a user's borrowings.
- * It interacts with the service and DAO layers to retrieve data and passes it to the appropriate view templates.</p>
- *
- * <p>This class is marked with the {@link Controller} annotation for integration with the Spring MVC framework,
- * processing requests prefixed with {@code /user}.</p>
- *//*
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
-    */
-/**
-     * Service for managing borrowing-related operations.
-     *//*
-
     private final BorrowingService borrowingService;
-
-    */
-/**
-     * Service for managing book-related operations and availability information.
-     *//*
 
     private final BookService bookService;
 
@@ -66,12 +44,12 @@ public class UserController {
     }
 
 
-   // @GetMapping("/available-books")
-   // public String showAvailableBooks(Model model) {
-        //List<BookWithAvailableCopiesDTO> books = bookService.getBooksWithAvailableCopies();
-        //model.addAttribute("books", books);
-        //return "user/views/view-available-books";
-   // }
+    @GetMapping("/available-books")
+    public String showAvailableBooks(Model model) {
+        Map<Book, Integer> books = bookService.getAvailableBooksWithNumberOfCopies();
+        model.addAttribute("books", books);
+        return "user/views/view-available-books";
+   }
 
     @GetMapping("/{id}/borrowings")
     public String showUsersBorrowings(@PathVariable("id") Long userId, Model model) {
@@ -80,6 +58,6 @@ public class UserController {
         model.addAttribute("userId", userId);
         return "user/views/view-borrowings.html";
     }
-}*/
+}
 
 

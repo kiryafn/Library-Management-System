@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Error</title>
+  <link rel="stylesheet" href="/css/show.css"> <!-- Подключение ваших стилей -->
+</head>
+<body>
+<div class="error-container">
+  <div class="error-message">
+    <p th:text="${errorMessage}">An unexpected error occurred.</p>
+  </div>
+</div>
+</body>
+</html>

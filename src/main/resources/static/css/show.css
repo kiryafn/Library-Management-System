@@ -160,3 +160,18 @@ button {
     color: white;
     text-align: center;
 }
+
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Высота, чтобы занять весь экран */
+}
+
+.error-message {
+    text-align: center;
+    color: white; /* Белый текст */
+    font-size: 2rem; /* Увеличенный шрифт для ошибки */
+    font-weight: 500; /* Полужирный текст */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Тень для читаемости */
+}

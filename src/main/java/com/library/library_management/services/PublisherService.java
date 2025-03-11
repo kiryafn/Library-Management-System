@@ -4,6 +4,7 @@ import com.library.library_management.entities.Publisher;
 import com.library.library_management.repository.PublisherRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -34,11 +35,13 @@ public class PublisherService {
     }
 
     public List<Publisher> getAll() {
-        return publisherRepository.findAll();
+        List<Publisher> publishers = new ArrayList<>();
+        publisherRepository.findAll().forEach(publishers::add);
+        return publishers;
     }
 
     public Publisher getById(Long id) {
-        return publisherRepository.getById(id);
+        return publisherRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Publisher with id " + id + " not found"));
     }
 
     public void validatePublisher(Publisher publisher){

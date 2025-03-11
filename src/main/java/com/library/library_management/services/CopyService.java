@@ -1,18 +1,20 @@
 package com.library.library_management.services;
 
 import com.library.library_management.entities.Book;
+import com.library.library_management.entities.Borrowing;
 import com.library.library_management.entities.Copy;
 import com.library.library_management.entities.CopyStatus;
 import com.library.library_management.repository.CopyRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class CopyService {
 
-    public CopyRepository copyRepository;
+    private final CopyRepository copyRepository;
 
     public CopyService(CopyRepository copyRepository) {
         this.copyRepository = copyRepository;
@@ -53,7 +55,9 @@ public class CopyService {
     }
 
     public List<Copy> getAll() {
-        return copyRepository.findAll();
+        List<Copy> copies = new ArrayList<>();
+        copyRepository.findAll().forEach(copies::add);
+        return copies;
     }
 
     private void validateCopy(Copy copy) {

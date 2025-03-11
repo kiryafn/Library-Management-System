@@ -41,11 +41,11 @@ public class BookService {
     }
 
     public Book getById(Long id) {
-        return bookRepository.getById(id);
+        return bookRepository.findById(id).orElseThrow();
     }
 
     public List<Book> getAll() {
-        return bookRepository.findAll();
+        return (List<Book>) bookRepository.findAll();
     }
 
     private void validateBook(Book book){

@@ -49,7 +49,7 @@ public class MainController {
             return "redirect:/user/" + user.getId(); // Redirect to the user-specific route
         } else {
             model.addAttribute("error", "Пользователь с таким email не найден"); // Add error to the model
-            return "index";
+            return "error/error-page";
         }
     }
 

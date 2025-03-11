@@ -1,7 +1,8 @@
 package com.library.library_management.entities;
-
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
+import java.util.List;
 import java.util.List;
 
 /**
@@ -35,8 +36,10 @@ public class User {
      *
      * <p>This field is non-null and stores the full name of the person.</p>
      */
-    @Column(nullable = false)
-    private String name;
+@NotBlank(message = "Name cannot be empty.")
+@Size(max = 100)
+@Column(nullable = false)
+private String name;
 
     /**
      * The unique email address of the person.
@@ -44,24 +47,31 @@ public class User {
      * <p>This field is non-null and enforces uniqueness in the database. It represents
      * the person's email, which may be used for communication or identification.</p>
      */
-    @Column(nullable = false, unique = true)
-    private String email;
+@NotBlank(message = "Email cannot be empty.")
+@Email(message = "Email should be valid and follow the format user@example.com.")
+@Size(max = 150)
+@Column(nullable = false, unique = true)
+private String email;
 
     /**
      * The phone number of the person.
      *
      * <p>This field is non-null and stores the contact phone number of the person.</p>
      */
-    @Column(nullable = false)
-    private String phoneNumber;
+@NotBlank(message = "Phone number cannot be empty.")
+@Pattern(regexp = "\\+?[0-9]+", message = "Phone number should be valid.")
+@Size(max = 20)
+@Column(nullable = false)
+private String phoneNumber;
 
     /**
      * The address of the person.
      *
      * <p>This field is optional and stores the person's residential or mailing address.</p>
      */
-    @Column
-    private String address;
+@Size(max = 250)
+@Column
+private String address;
 
     /**
      * The list of borrowings associated with the person.

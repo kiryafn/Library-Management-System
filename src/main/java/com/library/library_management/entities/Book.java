@@ -1,6 +1,8 @@
 package com.library.library_management.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+
 
 import java.util.List;
 
@@ -35,6 +37,7 @@ public class Book {
      * <p>This field is mandatory and is mapped to a non-null column in the database.</p>
      */
     @Column(nullable = false)
+    @NotBlank
     private String title;
 
     /**
@@ -43,24 +46,18 @@ public class Book {
      * <p>This field is mandatory and is mapped to a non-null column in the database.</p>
      */
     @Column(nullable = false)
+    @NotBlank
     private String author;
 
-    /**
-     * The publisher of the book.
-     *
-     * <p>This field establishes a many-to-one relationship with the {@link Publisher} entity
-     * using a foreign key column {@code publisher_id}. The relationship is mandatory.</p>
-     */
+
     @ManyToOne
     @JoinColumn(name = "publisher_id", nullable = false)
+    @NotNull
     private Publisher publisher;
 
-    /**
-     * The year the book was published.
-     *
-     * <p>This field is mandatory and is mapped to a non-null column in the database.</p>
-     */
+
     @Column(nullable = false)
+    @NotNull
     private Integer publicationYear;
 
     /**
@@ -69,6 +66,8 @@ public class Book {
      * <p>This field is mandatory, unique, and is mapped to a non-null, unique column in the database.</p>
      */
     @Column(nullable = false, unique = true)
+    @NotBlank
+    @Pattern(regexp = "^(97(8|9))?\\d{9}(\\d|X)$", message = "Invalid ISBN format")
     private String isbn;
 
     /**
@@ -83,17 +82,18 @@ public class Book {
     /**
      * Default no-argument constructor for JPA.
      */
-    public Book() {}
+    public Book() {
+    }
 
     /**
      * Constructs a new {@link Book} instance with the specified title, author, publisher,
      * publication year, and ISBN.
      *
-     * @param title the title of the book
-     * @param author the author of the book
-     * @param publisher the publisher of the book
+     * @param title           the title of the book
+     * @param author          the author of the book
+     * @param publisher       the publisher of the book
      * @param publicationYear the year the book was published
-     * @param isbn the ISBN of the book
+     * @param isbn            the ISBN of the book
      */
     public Book(String title, String author, Publisher publisher, Integer publicationYear, String isbn) {
         this.title = title;

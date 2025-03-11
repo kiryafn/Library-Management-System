@@ -5,7 +5,6 @@ import com.library.library_management.entities.Book;
 import com.library.library_management.entities.Borrowing;
 import com.library.library_management.services.BookService;
 import com.library.library_management.services.BorrowingService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,15 +16,13 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class UsersController {
 
     private final BorrowingService borrowingService;
 
     private final BookService bookService;
 
-
-    @Autowired
-    public UserController(BorrowingService borrowingService, BookService bookService) {
+    public UsersController(BorrowingService borrowingService, BookService bookService) {
         this.borrowingService = borrowingService;
         this.bookService = bookService;
     }
